@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Scrum Board</title>
+  <title>Bahamut Scrum Board</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <%= render "layouts/header" %>
-<div class="container-fluid"/>
+<div id="content" class="container-fluid"/>
   <%= yield %>
 </div>
 </body>

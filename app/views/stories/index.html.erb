@@ -4,8 +4,8 @@
       <div class="panel panel-default">
         <div class="panel-heading">Unstarted</div>
         <div class="panel-body">
-          <% 5.times do %>
-            <%= render "stories/story" %>
+          <% @unstarted_stories.each do |unstarted_story| %>
+            <%= render "stories/story", story: unstarted_story %>
           <% end %>
         </div>
       </div>
@@ -14,8 +14,8 @@
       <div class="panel panel-default">
         <div class="panel-heading">Started</div>
         <div class="panel-body">
-          <% 5.times do %>
-            <%= render "stories/story" %>
+          <% @started_stories.each do |started_story| %>
+            <%= render "stories/story", story: started_story %>
           <% end %>
         </div>
       </div>
@@ -24,8 +24,8 @@
       <div class="panel panel-default">
         <div class="panel-heading">Finished</div>
         <div class="panel-body">
-          <% 5.times do %>
-            <%= render "stories/story" %>
+          <% @finished_stories.each do |finished_story| %>
+            <%= render "stories/story", story: finished_story %>
           <% end %>
         </div>
       </div>
@@ -34,8 +34,8 @@
       <div class="panel panel-default">
         <div class="panel-heading">Delivered</div>
         <div class="panel-body">
-          <% 5.times do %>
-            <%= render "stories/story" %>
+          <% @delivered_stories.each do |delivered_story| %>
+            <%= render "stories/story", story: delivered_story %>
           <% end %>
         </div>
       </div>

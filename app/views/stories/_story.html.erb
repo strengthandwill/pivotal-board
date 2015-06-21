@@ -1,7 +1,13 @@
 <div class="panel panel-default">
   <div class="panel-body">
-    <span>CDG - Energy Efficiency</span><br>
-    <span>KK</span><br>
-    <span>3 sp</span>
+    <span><%= story.name %></span><br>
+    <span><strong>ID: </strong><%= story.id %></span><br>
+    <span><strong>Type: </strong><%= story.story_type.capitalize %></span><br>
+    <% unless(story.estimate.nil?) %>
+      <span><strong>Story points: </strong><%= story.estimate %></span><br>
+    <% end %>  
+    <% unless(story.owned_by.nil?) %>
+      <span><strong>Owned by: </strong><%= story.owned_by %></span>
+    <% end %>  
   </div>
 </div>
