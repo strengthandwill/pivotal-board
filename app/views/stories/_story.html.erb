@@ -6,8 +6,8 @@
     <% unless(story.estimate.nil?) %>
       <span><strong>Story points: </strong><%= story.estimate %></span><br>
     <% end %>  
-    <% unless(story.owned_by.nil?) %>
-      <span><strong>Owned by: </strong><%= story.owned_by %></span>
+    <% if(story.owned_by.length > 0) %>
+      <span><strong>Owned by: </strong><%= story.owned_by.join(", ") %></span>
     <% end %>  
   </div>
 </div>

@@ -22,6 +22,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec'
+  gem 'rest-client'
 end
 
 group :production do
