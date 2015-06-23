@@ -32,4 +32,14 @@ module StoriesHelper
                               {:"X-TrackerToken" => session[:token], :accept => :json}
     json = JSON.parse(response)["owners"].collect { |s| s["name"] }
   end
+  
+  def total_story_points(stories)
+    points = 0
+    stories.each do |story|
+      unless story.estimate.nil?
+        points += story.estimate.to_i
+      end
+    end
+    points
+  end
 end
