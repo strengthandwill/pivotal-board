@@ -15,6 +15,10 @@ class StoriesController < ApplicationController
     @finished_story_points  = total_story_points(@finished_stories)
     @delivered_story_points = total_story_points(@delivered_stories)
   end
+  
+  def chart
+    @team = params[:team]
+  end
 
   private
     def set_team(team)

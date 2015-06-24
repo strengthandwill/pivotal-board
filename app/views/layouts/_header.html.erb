@@ -1,7 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <%= link_to "#{@team.capitalize} Board", root_url, class: "navbar-brand" %>
-    <%= link_to "Bahamut", "#{root_url}bahamut", class: "btn btn-default navbar-btn" %>
-    <%= link_to "Omega", "#{root_url}omega", class: "btn btn-default navbar-btn" %>
+    <% unless @team.nil? %>
+      <%= link_to "#{@team.capitalize} Board", root_url, class: "navbar-brand" %>
+    <% end %>
+    <%= link_to "Bahamut", "#{root_url}board/bahamut", class: "btn btn-default navbar-btn" %>
+    <%= link_to "Omega", "#{root_url}board/omega", class: "btn btn-default navbar-btn" %>
   </div>
 </nav>
