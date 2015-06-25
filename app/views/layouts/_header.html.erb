@@ -3,7 +3,7 @@
     <% unless @team.nil? %>
       <%= link_to "#{@team.capitalize} Board", root_url, class: "navbar-brand" %>
     <% end %>
-    <%= link_to "Bahamut", "#{root_url}board/bahamut", class: "btn btn-default navbar-btn" %>
-    <%= link_to "Omega", "#{root_url}board/omega", class: "btn btn-default navbar-btn" %>
+    <%= link_to "Bahamut", "#{root_url}board/bahamut", target: "_blank", class: "btn btn-default navbar-btn" %>
+    <%= link_to "Omega", "#{root_url}board/omega", target: "_blank", class: "btn btn-default navbar-btn" %>
   </div>
 </nav>

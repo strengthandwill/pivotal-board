@@ -1,8 +1,11 @@
 module StoriesHelper
   PIVOTAL_URL = "https://www.pivotaltracker.com/services/v5"
   
-  def login_project(token, project_id)
+  def login(token)
     session[:token] = token
+  end
+
+  def set_project(project_id)
     session[:project_id] = project_id
   end
 
@@ -21,6 +24,10 @@ module StoriesHelper
       story.owned_by = owners(story) if result
       result
     end
+  end
+  
+  def appian?(story)
+    include_label?(story, "appian")
   end
 
   def include_label?(story, label)
