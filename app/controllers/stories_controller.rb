@@ -28,10 +28,12 @@ class StoriesController < ApplicationController
       @started_stories   = filter(all_current_stories, state: "started",   team: @team)
       @finished_stories  = filter(all_current_stories, state: "finished",  team: @team)
       @delivered_stories = filter(all_current_stories, state: "delivered", team: @team)
+      @accepted_stories  = filter(all_current_stories, state: "accepted", team: @team)
       @unstarted_story_points = total_story_points(@unstarted_stories)
       @started_story_points   = total_story_points(@started_stories)
       @finished_story_points  = total_story_points(@finished_stories)
       @delivered_story_points = total_story_points(@delivered_stories)
+      @accepted_story_points  = total_story_points(@accepted_stories)
     end
   
     def appian_stories
@@ -42,5 +44,6 @@ class StoriesController < ApplicationController
       @started_stories   = @started_stories   + filter(all_current_stories, state: "started",   team: @team)
       @finished_stories  = @finished_stories  + filter(all_current_stories, state: "finished",  team: @team)
       @delivered_stories = @delivered_stories + filter(all_current_stories, state: "delivered", team: @team)
+      @accepted_stories  = @accepted_stories  + filter(all_current_stories, state: "accepeted", team: @team)
     end
 end

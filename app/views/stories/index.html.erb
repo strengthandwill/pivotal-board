@@ -20,7 +20,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="panel panel-default">
         <div class="panel-heading"><strong>Finished</strong> (<%= @finished_story_points %> sp)</div>
         <div class="panel-body">
@@ -30,12 +30,22 @@
         </div>
       </div>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-2">
       <div class="panel panel-default">
         <div class="panel-heading"><strong>Delivered</strong> (<%= @delivered_story_points %> sp)</div>
         <div class="panel-body">
           <% @delivered_stories.each do |delivered_story| %>
             <%= render "stories/story", story: delivered_story %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+      <div class="panel panel-default">
+        <div class="panel-heading"><strong>Accepted</strong> (<%= @accepted_story_points %> sp)</div>
+        <div class="panel-body">
+          <% @accepted_stories.each do |accepted_story| %>
+            <%= render "stories/story", story: accepted_story %>
           <% end %>
         </div>
       </div>
