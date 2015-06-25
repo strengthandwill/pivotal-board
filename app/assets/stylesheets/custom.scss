@@ -1,13 +1,17 @@
 #content { margin-top: 60px; }
 
-.feature { background-color: lawngreen; }
+.story.feature { background-color: lawngreen; }
 
-.chore { background-color: yellow; }
+.story.chore { background-color: yellow; }
 
-.bug { background-color: orangered; }
+.story.bug { background-color: pink; }
 
-.appian {
-  background-color: lightskyblue;
+.story.appian { background-color: lightskyblue; }
+
+.story:hover {
+  border-style: solid;
+  border-width: 5px;
+  border-color: red;
 }
 
 img.bg {

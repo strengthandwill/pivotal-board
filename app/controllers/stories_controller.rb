@@ -24,6 +24,7 @@ class StoriesController < ApplicationController
       set_project(1345356)
       all_current_stories = current_stories
       @unstarted_stories = filter(all_current_stories, state: "planned",   team: @team)
+      @unstarted_stories = @unstarted_stories + filter(all_current_stories, state: "rejected",  team: @team)
       @started_stories   = filter(all_current_stories, state: "started",   team: @team)
       @finished_stories  = filter(all_current_stories, state: "finished",  team: @team)
       @delivered_stories = filter(all_current_stories, state: "delivered", team: @team)
@@ -37,6 +38,7 @@ class StoriesController < ApplicationController
       set_project(1347522)
       all_current_stories = current_stories
       @unstarted_stories = @unstarted_stories + filter(all_current_stories, state: "unstarted", team: @team)
+      @unstarted_stories = @unstarted_stories + filter(all_current_stories, state: "rejected",  team: @team)
       @started_stories   = @started_stories   + filter(all_current_stories, state: "started",   team: @team)
       @finished_stories  = @finished_stories  + filter(all_current_stories, state: "finished",  team: @team)
       @delivered_stories = @delivered_stories + filter(all_current_stories, state: "delivered", team: @team)
