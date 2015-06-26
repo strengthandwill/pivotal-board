@@ -7,7 +7,32 @@
       <span><strong>Story points: </strong><%= story.estimate %></span><br>
     <% end %>  
     <% if(story.owned_by.length > 0) %>
-      <span><strong>Owned by: </strong><%= story.owned_by.join(", ") %></span>
-    <% end %>  
+      <span><strong>Owned by: </strong><%= story.owned_by.join(", ") %></span><br>
+    <% end %>
+    <span class="pull-right">
+      <%= link_to "More", "#", class: "btn btn-primary", "data-toggle" => "modal", "data-target" => "\##{story.id}-modal" %>
+    </span>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="<%= story.id %>-modal" tabindex="-1" role="dialog" aria-labelledby="<%= story.id %>-modal-label">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content <%= story.story_type %> <%= 'appian' if appian?(story) %>">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <strong class="modal-title" id="<%= story.id %>-modal-label"><%= story.name %></strong>
+      </div>
+      <div class="modal-body">
+        <span><strong>ID: </strong><%= story.id %></span><br>
+        <span><strong>Type: </strong><%= story.story_type.capitalize %></span><br>
+        <% unless(story.estimate.nil?) %>
+          <span><strong>Story points: </strong><%= story.estimate %></span><br>
+        <% end %>
+        <% if(story.owned_by.length > 0) %>
+          <span><strong>Owned by: </strong><%= story.owned_by.join(", ") %></span><br>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

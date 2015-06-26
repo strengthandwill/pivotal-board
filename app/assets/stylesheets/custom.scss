@@ -1,18 +1,20 @@
 #content { margin-top: 60px; }
 
-.story.feature { background-color: lawngreen; }
+.feature { background-color: lawngreen; }
 
-.story.chore { background-color: yellow; }
+.chore { background-color: yellow; }
 
-.story.bug { background-color: pink; }
+.bug { background-color: pink; }
 
-.story.appian { background-color: lightskyblue; }
+.appian { background-color: lightskyblue; }
 
 .story:hover {
   border-style: solid;
   border-width: 5px;
   border-color: red;
 }
+
+.modal { font-size: 300%; }
 
 img.bg {
   /* Set rules to fill background */
