@@ -1,0 +1,9 @@
+<span><%= story.name %></span><br>
+<span><strong>ID: </strong><%= story.id %></span><br>
+<span><strong>Type: </strong><%= story.story_type.capitalize %></span><br>
+<% unless(story.estimate.nil?) %>
+  <span><strong>Story points: </strong><%= story.estimate %></span><br>
+<% end %>
+<% if(story.owner_ids.length > 0) %>
+  <span><strong>Owned by: </strong><%= story.owner_ids.join(", ") %></span><br>
+<% end %>

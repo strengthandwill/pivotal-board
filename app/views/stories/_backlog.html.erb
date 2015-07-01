@@ -1,0 +1,8 @@
+<div class="panel panel-default">
+  <div class="panel-heading"><strong><%= state %></strong> (<%= story_points %> sp)</div>
+  <div class="panel-body">
+    <% stories.each do |story| %>
+      <%= render "stories/story", story: story %>
+    <% end %>
+  </div>
+</div>

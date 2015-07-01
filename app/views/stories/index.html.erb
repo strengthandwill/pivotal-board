@@ -1,54 +1,29 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading"><strong>Unstarted</strong> (<%= @current.unstarted_story_points %> sp)</div>
-        <div class="panel-body">
-          <% @current.unstarted_stories.each do |unstarted_story| %>
-            <%= render "stories/story", story: unstarted_story %>
-          <% end %>
-        </div>
-      </div>
-      </div>
+      <%= render "stories/backlog", state: "Unstarted", 
+                 stories: @current.unstarted_stories, 
+                 story_points: @current.unstarted_story_points %>
+    </div>
     <div class="col-md-3">
-      <div class="panel panel-default">
-        <div class="panel-heading"><strong>Started</strong> (<%= @current.started_story_points %> sp)</div>
-        <div class="panel-body">
-          <% @current.started_stories.each do |started_story| %>
-            <%= render "stories/story", story: started_story %>
-          <% end %>
-        </div>
-      </div>
+      <%= render "stories/backlog", state: "Started",
+                 stories: @current.started_stories,
+                 story_points: @current.started_story_points %>
     </div>
     <div class="col-md-2">
-      <div class="panel panel-default">
-        <div class="panel-heading"><strong>Finished</strong> (<%= @current.finished_story_points %> sp)</div>
-        <div class="panel-body">
-          <% @current.finished_stories.each do |finished_story| %>
-            <%= render "stories/story", story: finished_story %>
-          <% end %>
-        </div>
-      </div>
+      <%= render "stories/backlog", state: "Finished",
+                 stories: @current.finished_stories,
+                 story_points: @current.finished_story_points %>
     </div>
     <div class="col-md-2">
-      <div class="panel panel-default">
-        <div class="panel-heading"><strong>Delivered</strong> (<%= @current.delivered_story_points %> sp)</div>
-        <div class="panel-body">
-          <% @current.delivered_stories.each do |delivered_story| %>
-            <%= render "stories/story", story: delivered_story %>
-          <% end %>
-        </div>
-      </div>
+      <%= render "stories/backlog", state: "Delivered",
+                 stories: @current.delivered_stories,
+                 story_points: @current.delivered_story_points %>
     </div>
     <div class="col-md-2">
-      <div class="panel panel-default">
-        <div class="panel-heading"><strong>Accepted</strong> (<%= @current.accepted_story_points %> sp)</div>
-        <div class="panel-body">
-          <% @current.accepted_stories.each do |accepted_story| %>
-            <%= render "stories/story", story: accepted_story %>
-          <% end %>
-        </div>
-      </div>
+      <%= render "stories/backlog", state: "Accepted",
+                 stories: @current.accepted_stories,
+                 story_points: @current.accepted_story_points %>
     </div>
   </div>
 </div>
