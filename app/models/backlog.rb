@@ -1,12 +1,14 @@
 class Backlog
   include ActiveModel::Model
+  
   attr_accessor :stories, :unstarted_stories, :started_stories, :finished_stories, 
                 :delivered_stories, :accepted_stories
                 
   attr_accessor :unstarted_story_points, :started_story_points, :finished_story_points,
                 :delivered_story_points, :accepted_story_points
   
-  def initialize(stories_params, options = {})
+  def initialize(stories_params, owners, options = {})
+    @owners = owners
     @team = options[:team] unless options[:team].nil?
     convert_params_to_stories(stories_params)
     categorize_stories_by_state
@@ -33,9 +35,25 @@ class Backlog
     def convert_params_to_stories(stories_params)
       @stories ||= []
       stories_params.each do |story_params|
-        story_params["labels"] = story_params["labels"].collect { |label| label["name"] }
-        @stories.push(Story.new(story_params))
+        story_params["labels"] = labels(story_params["labels"])
+        @stories.push(story(story_params))
       end
+    end
+  
+    def labels(story_params)
+      story_params.collect { |label| label["name"] }
+    end
+  
+    def story(story_params)
+      story = Story.new(story_params)
+      story_params["owner_ids"].each do |owner_id|
+        story.owners.push(find_person(owner_id))
+      end
+      story
+    end
+  
+    def find_person(owner_id)
+      @owners.find{ |person| person.id == owner_id }
     end
   
     def categorize_stories_by_state

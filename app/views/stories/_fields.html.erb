@@ -5,5 +5,5 @@
   <span><strong>Story points: </strong><%= story.estimate %></span><br>
 <% end %>
 <% if(story.owner_ids.length > 0) %>
-  <span><strong>Owned by: </strong><%= story.owner_ids.join(", ") %></span><br>
+  <span><strong>Owned by: </strong><%= story.owners_by_name %></span><br>
 <% end %>

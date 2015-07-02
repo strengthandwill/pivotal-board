@@ -3,7 +3,15 @@ class Story
   
   attr_accessor :kind, :id, :project_id, :name, :description, :story_type, :current_state, 
                 :estimate, :accepted_at, :requested_by_id, :owned_by_id, :owner_ids, :labels, 
-                :created_at, :updated_at, :url
+                :created_at, :updated_at, :url, :owners
+  
+  def owners
+    @owners ||= []
+  end
+  
+  def owners_by_name
+    owners.collect { |owner| owner.name }.join(", ")
+  end
 
   def state?(state)
     state.nil? || current_state==state
