@@ -7,10 +7,6 @@ class StoriesController < ApplicationController
     @current = backlog(1345356, @team)
     @current.merge(backlog(1347522, @team), false)
   end
-  
-  def chart
-    @team = params[:team]
-  end
 
   private
     def set_team(team)
