@@ -1,27 +1,27 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-      <%= render "stories/backlog", state: "Unstarted", 
+      <%= render "stories/backlog", state: "To Do", 
                  stories: @current.unstarted_stories, 
                  story_points: @current.unstarted_story_points %>
     </div>
     <div class="col-md-3">
-      <%= render "stories/backlog", state: "Started",
+      <%= render "stories/backlog", state: "In Progress",
                  stories: @current.started_stories,
                  story_points: @current.started_story_points %>
     </div>
     <div class="col-md-2">
-      <%= render "stories/backlog", state: "Finished",
+      <%= render "stories/backlog", state: "Testing",
                  stories: @current.finished_stories,
                  story_points: @current.finished_story_points %>
     </div>
     <div class="col-md-2">
-      <%= render "stories/backlog", state: "Delivered",
+      <%= render "stories/backlog", state: "Acceptance",
                  stories: @current.delivered_stories,
                  story_points: @current.delivered_story_points %>
     </div>
     <div class="col-md-2">
-      <%= render "stories/backlog", state: "Accepted",
+      <%= render "stories/backlog", state: "Done",
                  stories: @current.accepted_stories,
                  story_points: @current.accepted_story_points %>
     </div>
