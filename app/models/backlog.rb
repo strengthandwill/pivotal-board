@@ -14,23 +14,6 @@ class Backlog
     categorize_stories_by_state
   end
   
-  def merge(backlog, merge_points)
-    @stories += backlog.stories
-    @unstarted_stories  += backlog.unstarted_stories
-    @started_stories    += backlog.started_stories
-    @finished_stories   += backlog.finished_stories
-    @delivered_stories  += backlog.delivered_stories
-    @accepted_stories   += backlog.accepted_stories
-    
-    if (merge_points)
-      @unstarted_story_points += backlog.unstarted_story_points
-      @started_story_points   += backlog.started_story_points
-      @finished_story_points  += backlog.finished_story_points
-      @delivered_story_points += backlog.delivered_story_points
-      @accepted_story_points  += backlog.accepted_story_points  
-    end
-  end
-  
   private
     def convert_params_to_stories(stories_params)
       @stories ||= []
