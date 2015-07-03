@@ -1,4 +1,4 @@
-<div class="panel panel-default story <%= story.story_type %> <%= 'appian' if story.appian? %>"
+<div class="panel panel-default story <%= story.story_type %> <%= 'retro' if story.retro? %>"
      data-toggle="modal" data-target="<%= "\##{story.id}-modal" %>" >
   <div class="panel-body">
     <%= render "stories/fields", story: story, size: "50" %>
@@ -9,7 +9,7 @@
 <div class="modal fade" id="<%= story.id %>-modal" tabindex="-1" role="dialog" 
      aria-labelledby="<%= story.id %>-modal-label">
   <div class="modal-dialog modal-lg" role="document">
-    <div class="modal-content <%= story.story_type %> <%= 'appian' if story.appian? %>">
+    <div class="modal-content <%= story.story_type %> <%= 'retro' if story.retro? %>">
       <div class="modal-body">
         <%= render "stories/fields", story: story, size: "200" %>
       </div>

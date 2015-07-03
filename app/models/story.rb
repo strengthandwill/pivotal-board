@@ -29,8 +29,8 @@ class Story
     team.nil? || include_label?(team)
   end
 
-  def appian?
-    include_label?("appian")
+  def retro?
+    include_label?("retrospective?")
   end
 
   def include_label?(label)
