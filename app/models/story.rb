@@ -1,4 +1,6 @@
 class Story
+  IMAGE_URL = "https://dl.dropboxusercontent.com/u/20646265/IDA"
+  
   include ActiveModel::Model
   
   attr_accessor :kind, :id, :project_id, :name, :description, :story_type, :current_state, 
@@ -9,8 +11,14 @@ class Story
     @owners ||= []
   end
   
-  def owners_by_name
+  def owners_name
     owners.collect { |owner| owner.name }.join(", ")
+  end
+
+  def owners_image_url
+    owners.collect do |owner|
+      "#{IMAGE_URL}/#{owner.name.downcase.gsub(' ', '-')}.png" 
+    end
   end
 
   def state?(state)

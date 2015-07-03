@@ -1,9 +1,11 @@
-<span><%= story.name %></span><br>
-<span><strong>ID: </strong><%= story.id %></span><br>
-<span><strong>Type: </strong><%= story.story_type.capitalize %></span><br>
-<% unless(story.estimate.nil?) %>
-  <span><strong>Story points: </strong><%= story.estimate %></span><br>
+<span><strong><%= story.name %></strong></span>
+<span class="story-id"><%= story.id %></span>
+<% if(story.estimate > 0) %>
+  <span class="story-points"><%= story.estimate %> SP</span>
 <% end %>
+<br>
 <% if(story.owner_ids.length > 0) %>
-  <span><strong>Owned by: </strong><%= story.owners_by_name %></span><br>
+  <% story.owners_image_url.each do |image_url|%>
+    <%= image_tag image_url, size: size %>
+  <% end %>
 <% end %>

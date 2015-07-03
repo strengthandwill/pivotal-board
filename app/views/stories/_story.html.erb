@@ -1,10 +1,7 @@
-<div class="panel panel-default story <%= story.story_type %> <%= 'appian' if story.appian? %>">
+<div class="panel panel-default story <%= story.story_type %> <%= 'appian' if story.appian? %>"
+     data-toggle="modal" data-target="<%= "\##{story.id}-modal" %>" >
   <div class="panel-body">
-    <%= render "stories/fields", story: story %>
-    <span class="pull-right">
-      <%= link_to "More", "#", class: "btn btn-primary", "data-toggle" => "modal", 
-                  "data-target" => "\##{story.id}-modal" %>
-    </span>
+    <%= render "stories/fields", story: story, size: "50" %>
   </div>
 </div>
 
@@ -14,10 +11,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content <%= story.story_type %> <%= 'appian' if story.appian? %>">
       <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <%= render "stories/fields", story: story %>
+        <%= render "stories/fields", story: story, size: "200" %>
       </div>
     </div>
   </div>
