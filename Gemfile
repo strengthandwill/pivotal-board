@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder',             '~> 2.0'
 gem 'sdoc',                 '~> 0.4.0', group: :doc
+gem 'rest-client'
 
 group :development, :test do
   gem 'sqlite3'
@@ -21,7 +22,6 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'guard-rspec'
-  gem 'rest-client'
 end
 
 group :production do
