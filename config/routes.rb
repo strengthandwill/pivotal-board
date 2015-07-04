@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root  'stories#index'
-  get '/board/:team' => 'stories#index'
+  root  'board#index'
+  get '/board/:team' => 'board#index'
 end

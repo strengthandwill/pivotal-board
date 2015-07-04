@@ -1,7 +1,7 @@
 <div class="panel panel-default story <%= story.story_type %> <%= 'retro' if story.retro? %>"
      data-toggle="modal" data-target="<%= "\##{story.id}-modal" %>" >
   <div class="panel-body">
-    <%= render "stories/fields", story: story, size: "50" %>
+    <%= render "fields", story: story, size: "50" %>
   </div>
 </div>
 
@@ -11,7 +11,7 @@
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content <%= story.story_type %> <%= 'retro' if story.retro? %>">
       <div class="modal-body">
-        <%= render "stories/fields", story: story, size: "200" %>
+        <%= render "fields", story: story, size: "200" %>
       </div>
     </div>
   </div>

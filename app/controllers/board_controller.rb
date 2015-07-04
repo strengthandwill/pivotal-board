@@ -1,4 +1,4 @@
-class StoriesController < ApplicationController
+class BoardController < ApplicationController
   include PivotalApiHelper
   
   def index
