@@ -16,9 +16,23 @@ class Backlog
     @owners = owners
     convert_params_to_stories(backlog_params["stories"])
     categorize_stories_by_state
+    update_burndown
   end
   
   private
+    def update_burndown
+      burndown = Burndown.find_by(team: @team, date: Date.today)
+      params = {  team: @team, date: Date.today, unstarted: @unstarted_story_points,
+                  started: @started_story_points, finished: @finished_story_points,
+                  delivered: @delivered_story_points, accepted: @accepted_story_points }
+      if burndown.nil?
+        Burndown.create(params)
+      else
+        burndown.update_attributes(params)
+      end
+      
+    end
+  
     def convert_params_to_stories(stories_params)
       @stories ||= []
       stories_params.each do |story_params|
