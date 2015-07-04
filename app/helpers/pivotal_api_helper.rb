@@ -10,22 +10,20 @@ module PivotalApiHelper
     params = { scope: "current" }
     response = RestClient.get "#{PIVOTAL_URL}/projects/#{project_id}/iterations?#{params.to_query}",
                               {:'X-TrackerToken' => @token}
-    params = JSON.parse(response).first["stories"]
-    Backlog.new(params, owners(params), team: @team)
+    backlog_params = JSON.parse(response).first
+    Backlog.new(backlog_params, @team, owners(backlog_params["stories"]))
   end
   
   def person(person_id)
     response = RestClient.get "#{PIVOTAL_URL}/accounts/#{@account_id}/memberships/#{person_id}",
                               {:'X-TrackerToken' => @token}
-    params = JSON.parse(response)["person"].select do |key, value|
-      key=="id" || key=="name"
-    end
-    Person.create(params)
+    person_params = JSON.parse(response)["person"]
+    Person.create(person_params)
   end
   
   private
-    def owners(params)
-      owner_ids = params.collect { |story| story["owner_ids"] }.flatten
+    def owners(backlog_params)
+      owner_ids = backlog_params.collect { |story| story["owner_ids"] }.flatten
       owners = []
       owner_ids.each do |owner_id|
         owner = Person.find_by(id: owner_id)

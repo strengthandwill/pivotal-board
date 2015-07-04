@@ -1,5 +1,7 @@
 class Backlog
   include ActiveModel::Model
+
+  attr_accessor :start, :finish
   
   attr_accessor :stories, :unstarted_stories, :started_stories, :finished_stories, 
                 :delivered_stories, :accepted_stories
@@ -7,10 +9,12 @@ class Backlog
   attr_accessor :unstarted_story_points, :started_story_points, :finished_story_points,
                 :delivered_story_points, :accepted_story_points
   
-  def initialize(stories_params, owners, options = {})
+  def initialize(backlog_params, team, owners)
+    @start = backlog_params["start"]
+    @finish = backlog_params["finish"]
+    @team = team
     @owners = owners
-    @team = options[:team] unless options[:team].nil?
-    convert_params_to_stories(stories_params)
+    convert_params_to_stories(backlog_params["stories"])
     categorize_stories_by_state
   end
   
