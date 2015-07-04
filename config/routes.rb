@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
-  root  'board#index'
+  get 'chart/index'
+
+  root to: redirect('board/bahamut')
   get '/board/:team' => 'board#index'
+  get '/chart/:team' => 'chart#index'
 end

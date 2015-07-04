@@ -1,9 +1,9 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <% unless @team.nil? %>
-      <%= link_to "#{@team.capitalize} Board", root_url, class: "navbar-brand" %>
+      <%= link_to "#{yield :title}", "", class: "navbar-brand", onclick: "history.go(0)" %>
     <% end %>
-    <%= link_to "Bahamut", "#{root_url}board/bahamut", target: "_blank", class: "btn btn-default navbar-btn" %>
-    <%= link_to "Omega", "#{root_url}board/omega", target: "_blank", class: "btn btn-default navbar-btn" %>
+    <%= link_to "Bahamut", "./bahamut", target: "_blank", class: "btn btn-default navbar-btn" %>
+    <%= link_to "Omega",   "./omega",   target: "_blank", class: "btn btn-default navbar-btn" %>
   </div>
 </nav>

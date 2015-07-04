@@ -1,3 +1,4 @@
+<% provide :title, "#{@team.capitalize} Scrum Board" %>
 <div class="row-fluid">
     <%= render "backlog", state: "To Do", 
                stories: @current.unstarted_stories, 
