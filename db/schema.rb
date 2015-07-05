@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 20150704134422) do
     t.integer  "started"
     t.integer  "finished"
     t.integer  "delivered"
-    t.string   "accepted"
+    t.integer  "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

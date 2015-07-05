@@ -7,7 +7,7 @@ class CreateBurndowns < ActiveRecord::Migration
       t.integer :started
       t.integer :finished
       t.integer :delivered
-      t.string  :accepted
+      t.integer  :accepted
 
       t.timestamps null: false
     end

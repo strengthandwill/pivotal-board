@@ -1,3 +1,5 @@
+require "ext/Date"
+
 class Backlog
   include ActiveModel::Model
 
@@ -10,9 +12,9 @@ class Backlog
                 :delivered_story_points, :accepted_story_points
   
   def initialize(backlog_params, team, owners)
-    @start = backlog_params["start"]
-    @finish = backlog_params["finish"]
-    @team = team
+    @start  = Date.parse(backlog_params["start"]) + 1
+    @finish = Date.parse(backlog_params["finish"])
+    @team   = team
     @owners = owners
     convert_params_to_stories(backlog_params["stories"])
     categorize_stories_by_state
@@ -20,19 +22,6 @@ class Backlog
   end
   
   private
-    def update_burndown
-      burndown = Burndown.find_by(team: @team, date: Date.today)
-      params = {  team: @team, date: Date.today, unstarted: @unstarted_story_points,
-                  started: @started_story_points, finished: @finished_story_points,
-                  delivered: @delivered_story_points, accepted: @accepted_story_points }
-      if burndown.nil?
-        Burndown.create(params)
-      else
-        burndown.update_attributes(params)
-      end
-      
-    end
-  
     def convert_params_to_stories(stories_params)
       @stories ||= []
       stories_params.each do |story_params|
@@ -90,4 +79,19 @@ class Backlog
         end
       end
     end
+
+  def update_burndown
+    today = Date.today
+    if today.weekday?
+      burndown = Burndown.find_by(team: @team, date: today)
+      params = {  team: @team, date: today, unstarted: @unstarted_story_points,
+                  started: @started_story_points, finished: @finished_story_points,
+                  delivered: @delivered_story_points, accepted: @accepted_story_points }
+      if burndown.nil?
+        Burndown.create(params)
+      else
+        burndown.update_attributes(params)
+      end
+    end
+  end
 end
