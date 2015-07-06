@@ -8,7 +8,7 @@
     <% if(story.owner_ids.length > 0) %>
       <span><strong>Owners: </strong><%= story.owners_name %></span><br>
     <% end %>
-    <% unless(story.desciption.nil?) %>
+    <% unless(story.description.nil?) %>
       <div class="panel panel-default">
         <strong>Description</strong><br>
         <span><%= simple_format story.description %></span>
