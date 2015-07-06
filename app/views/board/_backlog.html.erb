@@ -1,5 +1,8 @@
 <div class="backlog panel panel-default col-md-<%= col_size %>">
-  <div class="panel-heading"><strong><%= state %></strong> (<%= story_points %> sp)</div>
+  <div class="panel-heading">
+    <strong><%= state %></strong>
+    <span class="pull-right"><%= story_points %> sp</span>
+  </div>
   <div class="panel-body">
     <% stories.each do |story| %>
       <%= render "story", story: story %>
