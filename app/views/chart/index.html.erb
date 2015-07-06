@@ -1,2 +1,4 @@
 <% provide :title, "#{@team.capitalize} Sprint Burndown" %>
-<%= high_chart("my_id", @chart) %>
+<div id="list" class="content container-fluid">
+  <%= high_chart("my_id", @chart) %>
+</div>

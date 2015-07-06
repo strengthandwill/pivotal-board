@@ -1,23 +1,25 @@
 <% provide :title, "#{@team.capitalize} Scrum Board" %>
-<div class="row-fluid">
-    <%= render "backlog", state: "To Do", 
-               stories: @current.unstarted_stories, 
-               story_points: @current.unstarted_story_points, 
-               col_size: 3 %>
-    <%= render "backlog", state: "In Progress",
-               stories: @current.started_stories,
-               story_points: @current.started_story_points, 
-               col_size: 3 %>
-    <%= render "backlog", state: "Testing",
-               stories: @current.finished_stories,
-               story_points: @current.finished_story_points, 
-               col_size: 2 %>
-    <%= render "backlog", state: "Acceptance",
-               stories: @current.delivered_stories,
-               story_points: @current.delivered_story_points, 
-               col_size: 2 %>
-    <%= render "backlog", state: "Done",
-               stories: @current.accepted_stories,
-               story_points: @current.accepted_story_points, 
-               col_size: 2 %>
+<div id="board" class="content container-fluid">
+  <div class="row-fluid">
+      <%= render "backlog", state: "To Do", 
+                 stories: @current.unstarted_stories, 
+                 story_points: @current.unstarted_story_points, 
+                 col_size: 3 %>
+      <%= render "backlog", state: "In Progress",
+                 stories: @current.started_stories,
+                 story_points: @current.started_story_points, 
+                 col_size: 3 %>
+      <%= render "backlog", state: "Testing",
+                 stories: @current.finished_stories,
+                 story_points: @current.finished_story_points, 
+                 col_size: 2 %>
+      <%= render "backlog", state: "Acceptance",
+                 stories: @current.delivered_stories,
+                 story_points: @current.delivered_story_points, 
+                 col_size: 2 %>
+      <%= render "backlog", state: "Done",
+                 stories: @current.accepted_stories,
+                 story_points: @current.accepted_story_points, 
+                 col_size: 2 %>
+  </div>
 </div>

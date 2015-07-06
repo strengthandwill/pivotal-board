@@ -1,37 +1,41 @@
-#content { margin-top: 60px; }
+.content { margin-top: 60px; }
 
-.feature { background-color: lawngreen; }
+.full-height { height: 100%; }
 
-.chore { background-color: yellow; }
-
-.bug { background-color: pink; }
-
-.restro { background-color: lightskyblue; }
-
-.story:hover {
-  border-style: solid;
-  border-width: 5px;
-  border-color: red;
+html, body, .container-fluid {
+  @extend .full-height
 }
 
-.story-id { background-color: orange }
+#board {
+  .feature { background-color: lawngreen; }
 
-.story-points { background-color: cyan }
+  .chore { background-color: yellow; }
 
-.full-height {
-  height: 100%;
-}
+  .bug { background-color: pink; }
 
-html, body, .container-fluid, .row-fluid {
-  @extend .full-height 
-}
+  .retro { background-color: lightskyblue; }
 
-.backlog {
-  @extend .full-height;
-  > .panel-body {
-    height: 95%;
-    overflow-y: scroll;
+  .story:hover {
+    border-style: solid;
+    border-width: 5px;
+    border-color: red;
+  }
+
+  .story-id { background-color: orange }
+
+  .story-points { background-color: cyan }
+
+  .row-fluid { @extend .full-height }
+
+  .backlog {
+    @extend .full-height;
+    > .panel-body {
+      height: 95%;
+      overflow-y: scroll;
+    }
+  }
+
+  .modal {
+    font-size: 300%;
   }
 }
-
-.modal { font-size: 300%; }
