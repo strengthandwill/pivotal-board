@@ -1,3 +1,33 @@
-// Place all the styles related to the stories controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+#board {
+  .row-fluid { @extend .full-height }
+  
+  .feature { background-color: lawngreen; }
+
+  .chore { background-color: yellow; }
+
+  .bug { background-color: pink; }
+
+  .retro { background-color: lightskyblue; }
+
+  .rejected { @include flashing-background(lawngreen, green) }
+
+  .story:hover {
+    border-style: solid;
+    border-width: 5px;
+    border-color: red;
+  }
+
+  .story-id { background-color: orange }
+
+  .story-points { background-color: cyan }
+
+  .backlog {
+    @extend .full-height;
+    > .panel-body {
+      height: 95%;
+      overflow-y: scroll;
+    }
+  }
+
+  .modal { font-size: 300%; }
+}

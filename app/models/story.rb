@@ -32,6 +32,10 @@ class Story
   def retro?
     include_label?("retrospective?")
   end
+  
+  def rejected?
+    state?("rejected")
+  end
 
   def include_label?(label)
     !labels.nil? && labels.to_s.include?(label)
