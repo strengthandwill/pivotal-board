@@ -14,12 +14,12 @@ module ChartHelper
       f.tooltip(shared: true, valueSuffix: " sp")
       f.legend(align: "right", verticalAlign: "top", y: 75, x: -50, layout: "vertical")
       f.chart({ defaultSeriesType: "area" })
-      f.series(name: "Done (Accepted)",            data: accepted(burndowns))
-      f.series(name: "Acceptance (Delivered)",     data: delivered(burndowns))
-      f.series(name: "Testing (Finished)",         data: finished(burndowns))
-      f.series(name: "In Progress (Started)",      data: started(burndowns))
-      f.series(name: "To Do (Unstarted/Rejected)", data: unstarted(burndowns))
-      f.series(name: "Ideal",                      data: planned, type: "line")
+      f.series(name: "Done",            data: accepted(burndowns))
+      f.series(name: "PPO Acceptance",  data: delivered(burndowns))
+      f.series(name: "QE Testing",      data: finished(burndowns))
+      f.series(name: "DEV In Progress", data: started(burndowns))
+      f.series(name: "DEV To Do",       data: unstarted(burndowns))
+      f.series(name: "Ideal",           data: planned, type: "line")
     end
   end
   

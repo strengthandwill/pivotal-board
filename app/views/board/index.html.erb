@@ -1,23 +1,23 @@
 <% provide :title, "#{@team.capitalize} Scrum Board" %>
 <div id="board" class="content container-fluid">
   <div class="row-fluid">
-      <%= render "backlog", state: "To Do (Unstarted/Rejected)", 
+      <%= render "backlog", state: "DEV To Do", tooltip: "Unstarted or Rejected in PivotalTracker", 
                  stories: @current.unstarted_stories, 
                  story_points: @current.unstarted_story_points, 
                  col_size: 3 %>
-      <%= render "backlog", state: "In Progress (Started)",
+      <%= render "backlog", state: "DEV In Progress", tooltip: "Started in PivotalTracker",
                  stories: @current.started_stories,
                  story_points: @current.started_story_points, 
                  col_size: 3 %>
-      <%= render "backlog", state: "Testing (Finished)",
+      <%= render "backlog", state: "QE Testing", tooltip: "Finished in PivotalTracker",
                  stories: @current.finished_stories,
                  story_points: @current.finished_story_points, 
                  col_size: 2 %>
-      <%= render "backlog", state: "Acceptance (Delivered)",
+      <%= render "backlog", state: "PPO Acceptance", tooltip: "Delivered in PivotalTracker",
                  stories: @current.delivered_stories,
                  story_points: @current.delivered_story_points, 
                  col_size: 2 %>
-      <%= render "backlog", state: "Done (Accepted)",
+      <%= render "backlog", state: "Done", tooltip: "Accepted in PivotalTracker",
                  stories: @current.accepted_stories,
                  story_points: @current.accepted_story_points, 
                  col_size: 2 %>

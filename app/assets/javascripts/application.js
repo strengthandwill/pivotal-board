@@ -18,3 +18,8 @@
 //= require highcharts/highcharts                                                           
 //= require highcharts/highcharts-more   
 //= require_tree .
+
+$(document).ready(function() {
+  $('.show-tooltip').tooltip();
+});
+
