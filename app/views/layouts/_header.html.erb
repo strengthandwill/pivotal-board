@@ -3,7 +3,11 @@
     <% unless @team.nil? %>
       <%= link_to "#{yield :title}", "", class: "navbar-brand", onclick: "history.go(0)" %>
     <% end %>
-    <%= link_to "Bahamut", "./bahamut", target: "_blank", class: "btn btn-default navbar-btn" %>
-    <%= link_to "Omega",   "./omega",   target: "_blank", class: "btn btn-default navbar-btn" %>
+    <% @teams.each do |team| %>
+      <%= link_to "#{team.capitalize} Board", "../board/#{team}", target: "_blank", class: "btn btn-default navbar-btn" %>
+    <% end %>
+    <% @teams.each do |team| %>
+      <%= link_to "#{team.capitalize} Chart", "../chart/#{team}", target: "_blank", class: "btn btn-default navbar-btn" %>
+    <% end %>
   </div>
 </nav>
