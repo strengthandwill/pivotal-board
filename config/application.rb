@@ -22,5 +22,8 @@ module PivotalBoard
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    # Load application configuration file
+    ENV.update YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
   end
 end

@@ -1,22 +1,15 @@
 module PivotalApiHelper
-  PIVOTAL_URL = "https://www.pivotaltracker.com/services/v5"
-  
-  def login(token, account_id)
-    session[:token] = token
-    session[:account_id] = account_id
-  end
-  
-  def backlog(project_id, team)
+  def backlog(team)
     params = { scope: "current" }
-    response = RestClient.get "#{PIVOTAL_URL}/projects/#{project_id}/iterations?#{params.to_query}",
-                              {:'X-TrackerToken' => session[:token]}
+    response = RestClient.get "#{ENV["PIVOTAL_API_URL"]}/projects/#{ENV["PIVOTAL_API_PROJECT_ID"]}/iterations?#{params.to_query}",
+                              {:'X-TrackerToken' => ENV["PIVOTAL_API_TOKEN"]}
     backlog_params = JSON.parse(response).first
     Backlog.new(backlog_params, @team, owners(backlog_params["stories"]))
   end
   
   def person(person_id)
-    response = RestClient.get "#{PIVOTAL_URL}/accounts/#{session[:account_id]}/memberships/#{person_id}",
-                              {:'X-TrackerToken' => session[:token]}
+    response = RestClient.get "#{ENV["PIVOTAL_API_URL"]}/accounts/#{ENV["PIVOTAL_API_ACCOUNT_ID"]}/memberships/#{person_id}",
+                              {:'X-TrackerToken' => ENV["PIVOTAL_API_TOKEN"]}
     person_params = JSON.parse(response)["person"]
     Person.create(person_params)
   end

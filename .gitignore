@@ -18,3 +18,4 @@
 
 # Ignore all RubyMine files
 /.idea/*
+/config/application.yml
