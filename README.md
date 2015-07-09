@@ -8,14 +8,8 @@ Automatically generate the following from your Pivotal Tracker Project:
 
 ## Configuration
 
-```
-bundle
-cp config/application.example.yml config/application.yml
-rake db:setup
-rails s
-```
-
 Put pivotal_api_account_id and pivotal_api_project_id in quotes as they are numbers.
+
 **application.yml**
 ```
 pivotal_api_url:        https://www.pivotaltracker.com/services/v5
@@ -23,6 +17,12 @@ pivotal_api_token:      your_pivotal_tracker_token
 pivotal_api_account_id: your_pivotal_tracker_account_id
 pivotal_api_project_id: your_pivotal_tracker_project_id
 people_images_dir_url:  your_team_member_images_directory_url
+```
+
+When deploying to Heroku, run the following command to set the settings in production.
+
+```
+$ figaro heroku:set -e production
 ```
 
 ## Scrum Sprint Board
@@ -61,3 +61,7 @@ if necessary.
 ## Additional Information
 
 * Pivotal API v5 Help: https://www.pivotaltracker.com/help/api/rest/v5
+
+## Contact Us
+
+* Email us @ <poh_kah_kong@ida.gov.sg>
