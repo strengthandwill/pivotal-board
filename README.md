@@ -46,6 +46,8 @@ Following colors to represent the various type of stories in Pivotal Tracker
 3. Red            -> Bug
 4. Flashing Green -> Rejected User Story
 
+![Sprint Scrum Board][scrum-board]
+
 ## Scrum Sprint Burndown
 
 Displays the progress of the current Iteration in Pivotal Tracker project for the working team 
@@ -58,6 +60,8 @@ if necessary.
 4. PO Acceptance   -> Dark blue
 5. Done            -> Blue
 
+![Sprint Burndown Chart][sprint-burndown]
+
 ## Additional Information
 
 * Pivotal API v5 Help: https://www.pivotaltracker.com/help/api/rest/v5
@@ -65,3 +69,6 @@ if necessary.
 ## Contact Us
 
 * Email us @ <poh_kah_kong@ida.gov.sg>
+
+[scrum-board]: ./app/assets/images/scrum-board.png
+[sprint-burndown]: ./app/assets/images/sprint-burndown.png
