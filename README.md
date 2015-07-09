@@ -15,14 +15,14 @@ rake db:setup
 rails s
 ```
 
-Put PIVOTAL_API_ACCOUNT_ID and PIVOTAL_API_PROJECT_ID in quotes as they are numbers.
+Put pivotal_api_account_id and pivotal_api_project_id in quotes as they are numbers.
 **application.yml**
 ```
-PIVOTAL_API_URL:        https://www.pivotaltracker.com/services/v5
-PIVOTAL_API_TOKEN:      your_pivotal_tracker_token
-PIVOTAL_API_ACCOUNT_ID: your_pivotal_tracker_account_id
-PIVOTAL_API_PROJECT_ID: your_pivotal_tracker_project_id
-PEOPLE_IMAGES_DIR_URL:  your_team_member_images_directory_url
+pivotal_api_url:        https://www.pivotaltracker.com/services/v5
+pivotal_api_token:      your_pivotal_tracker_token
+pivotal_api_account_id: your_pivotal_tracker_account_id
+pivotal_api_project_id: your_pivotal_tracker_project_id
+people_images_dir_url:  your_team_member_images_directory_url
 ```
 
 ## Scrum Sprint Board

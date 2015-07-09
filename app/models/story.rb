@@ -15,7 +15,7 @@ class Story
 
   def owners_image_url
     owners.collect do |owner|
-      "#{ENV["PEOPLE_IMAGES_DIR_URL"]}/#{owner.name.downcase.gsub(' ', '-')}.png" 
+      "#{ENV["people_images_dir_url"]}/#{owner.name.downcase.gsub(' ', '-')}.png" 
     end
   end
 

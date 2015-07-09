@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   include PivotalApiHelper
   
   def teams
-    @teams = ENV["TEAMS"].split(",")
+    @teams = ENV["teams"].split(",")
   end
 
   protected
