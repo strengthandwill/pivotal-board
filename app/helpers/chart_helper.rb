@@ -25,7 +25,7 @@ module ChartHelper
   
   private
     def burndowns(team, start)
-      Burndown.where(team: team, date: start..Date.today)
+      Burndown.where(team: team, date: start..Date.today).order(:date)
     end
   
     def unstarted(burndowns)
