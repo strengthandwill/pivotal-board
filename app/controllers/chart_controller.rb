@@ -2,7 +2,7 @@ class ChartController < ApplicationController
   include ChartHelper
   
   def index
-    @team = set_team(params[:team])
+    @team = team_param
     current = backlog(@team)
     @chart = chart(@team, current.start, current.finish)
   end

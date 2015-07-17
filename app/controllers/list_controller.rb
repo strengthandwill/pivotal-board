@@ -1,6 +1,6 @@
 class ListController < ApplicationController
   def index
-    @team = set_team(params[:team])
+    @team = team_param
     @current = backlog(@team)
   end
 end

@@ -1,0 +1,19 @@
+<% provide :title, "#{@team.capitalize} Stamp Card" %>
+<div id="pairing" class="content container-fluid">
+  <table class="table-hover border">
+    <tr>
+      <td></td>
+      <% @members_image_url.each do |image_url| %>
+        <td><%= image_tag image_url, size:"100" %></td>
+      <% end %>  
+    </tr>
+    <% @members_image_url.each do |image_url| %>
+      <tr>
+        <td><%= image_tag image_url, size:"100" %></td>
+        <% (@members_image_url.length-1).times do |n| %>
+          <td></td>
+        <% end %>
+      </tr>
+      <% end %>  
+  </table>
+</div>

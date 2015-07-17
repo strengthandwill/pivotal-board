@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
   end
 
   protected
-    def set_team(team)
+    def team_param
+      team = params[:team]
       @teams.include?(team)?team:@teams[0]
     end
 end
