@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150704134422) do
+ActiveRecord::Schema.define(version: 20150718101556) do
 
   create_table "burndowns", force: :cascade do |t|
     t.string   "team"
@@ -26,9 +26,24 @@ ActiveRecord::Schema.define(version: 20150704134422) do
   end
 
   create_table "people", force: :cascade do |t|
+    t.integer  "person_id"
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "image_path"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
   end
+
+  add_index "people", ["email"], name: "index_people_on_email", unique: true
+  add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
 
 end

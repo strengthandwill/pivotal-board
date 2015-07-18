@@ -16,7 +16,7 @@ class Story
 
   def owners_image
     owners.collect do |owner|
-      owner_image(owner.name)
+      person_image_path(owner.name)
     end
   end
 

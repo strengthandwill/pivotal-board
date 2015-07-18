@@ -4,8 +4,8 @@
   <span class="story-points"><%= story.estimate %> sp</span>
 <% end %>
 <br>
-<% if(story.owner_ids.length > 0) %>
-  <% story.owners_image.each do |image_url|%>
-    <%= image_tag image_url, size: size %>
+<% if(story.owners.length > 0) %>
+  <% story.owners.each do |owner|%>
+    <%= image_tag owner.image_path, size: size %>
   <% end %>
 <% end %>

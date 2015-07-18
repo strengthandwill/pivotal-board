@@ -13,6 +13,8 @@ gem 'sdoc',                 '~> 0.4.0', group: :doc
 gem 'rest-client'
 gem 'lazy_high_charts'
 gem 'figaro'
+gem 'devise'
+gem 'seed_dump'
 
 group :development, :test do
   gem 'sqlite3'

@@ -1,7 +1,22 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+Burndown.create!([
+  {team: "bahamut", date: "2015-07-02", unstarted: 3, started: 12, finished: 19, delivered: 0, accepted: 0},
+  {team: "bahamut", date: "2015-07-03", unstarted: 0, started: 13, finished: 21, delivered: 0, accepted: 0},
+  {team: "omega", date: "2015-07-02", unstarted: 25, started: 11, finished: 3, delivered: 0, accepted: 0},
+  {team: "omega", date: "2015-07-03", unstarted: 12, started: 24, finished: 3, delivered: 0, accepted: 0},
+  {team: "bahamut", date: "2015-07-06", unstarted: 0, started: 13, finished: 3, delivered: 10, accepted: 8},
+  {team: "omega", date: "2015-07-06", unstarted: 10, started: 18, finished: 6, delivered: 6, accepted: 0},
+  {team: "bahamut", date: "2015-07-07", unstarted: 2, started: 14, finished: 0, delivered: 0, accepted: 19},
+  {team: "omega", date: "2015-07-07", unstarted: 0, started: 30, finished: 8, delivered: 0, accepted: 6},
+  {team: "bahamut", date: "2015-07-08", unstarted: 2, started: 13, finished: 0, delivered: 0, accepted: 20},
+  {team: "omega", date: "2015-07-08", unstarted: 0, started: 28, finished: 8, delivered: 5, accepted: 7},
+  {team: "bahamut", date: "2015-07-09", unstarted: 2, started: 13, finished: 0, delivered: 0, accepted: 20},
+  {team: "omega", date: "2015-07-09", unstarted: 0, started: 28, finished: 8, delivered: 5, accepted: 7},
+  {team: "bahamut", date: "2015-07-10", unstarted: 3, started: 10, finished: 0, delivered: 0, accepted: 25},
+  {team: "omega", date: "2015-07-10", unstarted: 0, started: 7, finished: 16, delivered: 9, accepted: 15},
+  {team: "bahamut", date: "2015-07-14", unstarted: 0, started: 8, finished: 6, delivered: 0, accepted: 25},
+  {team: "omega", date: "2015-07-14", unstarted: 3, started: 2, finished: 21, delivered: 8, accepted: 16},
+  {team: "bahamut", date: "2015-07-17", unstarted: 17, started: 11, finished: 0, delivered: 3, accepted: 3},
+  {team: "bahamut", date: "2015-07-17", unstarted: 17, started: 11, finished: 0, delivered: 3, accepted: 3},
+  {team: "omega", date: "2015-07-17", unstarted: 10, started: 11, finished: 0, delivered: 24, accepted: 0},
+  {team: "omega", date: "2015-07-16", unstarted: 10, started: 11, finished: 0, delivered: 24, accepted: 0}
+])

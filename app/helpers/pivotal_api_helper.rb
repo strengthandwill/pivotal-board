@@ -19,7 +19,7 @@ module PivotalApiHelper
       owner_ids = backlog_params.collect { |story| story["owner_ids"] }.flatten
       owners = []
       owner_ids.each do |owner_id|
-        owner = Person.find_by(id: owner_id)
+        owner = Person.find_by(person_id: owner_id)
         owner = person(owner_id) if owner.nil?
         owners.push(owner)
       end

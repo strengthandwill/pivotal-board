@@ -43,7 +43,7 @@ class Backlog
     end
   
     def find_person(owner_id)
-      @owners.find{ |person| person.id == owner_id }
+      @owners.select{ |owner| owner.person_id == owner_id }.first
     end
   
     def categorize_stories_by_state
