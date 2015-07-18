@@ -1,5 +1,6 @@
 class Story
   include ActiveModel::Model
+  include ImagesHelper
   
   attr_accessor :kind, :id, :project_id, :name, :description, :story_type, :current_state, 
                 :estimate, :accepted_at, :requested_by_id, :owned_by_id, :owner_ids, :labels, 
@@ -13,9 +14,9 @@ class Story
     owners.collect { |owner| owner.name }.join(", ")
   end
 
-  def owners_image_url
+  def owners_image
     owners.collect do |owner|
-      "#{ENV["people_images_dir_url"]}/#{owner.name.downcase.gsub(' ', '-')}.png" 
+      owner_image(owner.name)
     end
   end
 
