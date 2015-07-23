@@ -2,6 +2,7 @@ class CreatePeople < ActiveRecord::Migration
   def change
     create_table :people do |t|
       t.integer :person_id
+      t.string  :username
       t.string  :name
       t.string  :image_path
 

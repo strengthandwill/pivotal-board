@@ -1,6 +1,6 @@
 module ImagesHelper
   def person_image_path(person_name)
-    default_image_path(person_name.downcase.gsub(' ', '-'))
+    default_image_path(person_name.to_s.downcase.gsub(' ', '-'))
   end
   
   def team_stamp_image_path(team)

@@ -9,5 +9,13 @@
     <% @teams.each do |team| %>
       <%= link_to "#{team.capitalize} Chart", "../chart/#{team}", target: "_blank", class: "btn btn-default navbar-btn" %>
     <% end %>
+    <div class="pull-right navbar-text">
+      <% if person_signed_in? %>
+        <span>Hello, <%= current_person.name %>!</span>
+        <%= link_to "Sign out", destroy_person_session_path, method: :delete, class: "btn" %>
+      <% else %>
+        <%= link_to "Sign in", new_person_session_path %>
+      <% end %>
+    </div>
   </div>
 </nav>

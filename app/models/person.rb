@@ -8,6 +8,7 @@ class Person < ActiveRecord::Base
   
   def initialize(attributes = {})
     super(person_id:             attributes["id"],
+          username:              attributes["username"],
           name:                  attributes["name"],
           image_path:            person_image_path(attributes["name"]), 
           email:                 attributes["email"],
