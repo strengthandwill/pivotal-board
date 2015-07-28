@@ -1,8 +1,19 @@
-.content { margin-top: 80px; }
+/* palette */
+$feature-color:           #DFF0D8;
+$feature-secondary-color: darkseagreen;
+$chore-color:             #FFE082;
+$bug-color:               pink;
+$retro-color:             lightskyblue;
+$impeded-color:           brown;
+
+/* content */
+.content { margin-top: 60px; }
 
 .full-height { height: 100%; }
 
 html, body, .container-fluid { @extend .full-height; }
+
+#flash_alert { margin-top: -60px; }
 
 .alert-notice { @extend .alert-success; }
 

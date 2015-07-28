@@ -1,21 +1,36 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-    <% unless @team.nil? %>
-      <%= link_to "#{yield :title}", "", class: "navbar-brand", onclick: "history.go(0)" %>
-    <% end %>
-    <% @teams.each do |team| %>
-      <%= link_to "#{team.capitalize} Board", "../board/#{team}", target: "_blank", class: "btn btn-default navbar-btn" %>
-    <% end %>
-    <% @teams.each do |team| %>
-      <%= link_to "#{team.capitalize} Chart", "../chart/#{team}", target: "_blank", class: "btn btn-default navbar-btn" %>
-    <% end %>
-    <span class="pull-right navbar-text">
-      <% if person_signed_in? %>
-        Hello, <%= link_to current_person.name, edit_person_registration_path %>!
-        <%= link_to "Sign out", destroy_person_session_path, method: :delete, class: "btn" %>
+    <div class="navbar-header">
+      <% if @team.nil? %>
+        <%= link_to "Pivotal Board", root_url, class: "navbar-brand" %>
       <% else %>
-        <%= link_to "Sign in", new_person_session_path %>
+        <%= link_to "#{yield :title}", "", class: "navbar-brand", onclick: "history.go(0)" %>
       <% end %>
-    </span>
+      <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" 
+              data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <% @teams.each do |team| %>
+          <li><%= link_to "#{team.capitalize} Board ", "../board/#{team}" %></li>
+        <% end %>
+        <% @teams.each do |team| %>
+          <li><%= link_to "#{team.capitalize} Chart", "../chart/#{team}" %></li>
+        <% end %>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <% if person_signed_in? %>
+            <li><%= link_to "Welcome #{current_person.name}!", edit_person_registration_path %></li>
+            <li><%= link_to "Sign out", destroy_person_session_path, method: :delete%></li>
+        <% else %>
+          <li><%= link_to "Sign in", new_person_session_path %></li>
+        <% end %>
+      </ul>
+  </div>
   </div>
 </nav>
