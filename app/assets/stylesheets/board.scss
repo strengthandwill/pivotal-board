@@ -1,9 +1,9 @@
 #board {
   .row-fluid { @extend .full-height }
   
-  .feature { background-color: lawngreen; }
+  .feature { background-color: #DFF0D8; }
 
-  .chore { background-color: yellow; }
+  .chore { background-color: #FFE082; }
 
   .bug { background-color: pink; }
 

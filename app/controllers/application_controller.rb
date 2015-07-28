@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_person!
   before_action :teams
   
   # Prevent CSRF attacks by raising an exception.

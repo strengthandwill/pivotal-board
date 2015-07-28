@@ -1,10 +1,12 @@
-.content { margin-top: 60px; }
+.content { margin-top: 80px; }
 
 .full-height { height: 100%; }
 
-html, body, .container-fluid {  
-  @extend .full-height
-}
+html, body, .container-fluid { @extend .full-height; }
+
+.alert-notice { @extend .alert-success; }
+
+.alert-alert { @extend .alert-danger;  }
 
 @mixin flashing-background($from, $to) {
   background-color: $from;

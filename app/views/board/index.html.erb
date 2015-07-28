@@ -1,5 +1,5 @@
 <% provide :title, "#{@team.capitalize} Scrum Board" %>
-<div id="board" class="content container-fluid">
+<div id="board">
   <div class="row-fluid">
       <%= render "backlog", state: "DEV To Do", tooltip: "Unstarted or Rejected in PivotalTracker", 
                  stories: @current.unstarted_stories, 
