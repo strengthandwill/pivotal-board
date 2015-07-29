@@ -21,11 +21,10 @@ module PivotalApiHelper
                               {:'X-TrackerToken' => ENV["pivotal_api_token"]}
     JSON.parse(response).each do |person_params|
       person_params = person_params["person"]
-      # person_id = person_params["id"]
-      # if Person.find_by(person_id: person_id).nil?
-        person = Person.new
-        person.set_params(person_params)
-      # end
+      person_id = person_params["id"]
+      if Person.find_by(person_id: person_id).nil?
+        Person.create(person_params)
+      end
     end
   end
   
