@@ -46,5 +46,6 @@ ActiveRecord::Schema.define(version: 20150718101556) do
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
+  add_index "people", ["username"], name: "index_people_on_username", unique: true
 
 end
