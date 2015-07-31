@@ -36,6 +36,10 @@ class Story
     state?("rejected")
   end
 
+  def impeded?
+    include_label?("impeded")
+  end
+
   def include_label?(label)
     !labels.nil? && labels.to_s.include?(label)
   end

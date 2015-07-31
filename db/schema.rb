@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731002313) do
+ActiveRecord::Schema.define(version: 20150731161742) do
 
   create_table "burndowns", force: :cascade do |t|
     t.string   "team"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20150731002313) do
     t.integer  "accepted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "impeded"
   end
 
   create_table "people", force: :cascade do |t|

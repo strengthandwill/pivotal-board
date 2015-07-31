@@ -14,7 +14,8 @@ module ChartHelper
       f.tooltip(shared: true, valueSuffix: " sp")
       f.legend(verticalAlign: 'bottom', align:'center', y: 0, x: 0, layout: "vertical")
       f.chart({ defaultSeriesType: "area" })
-      f.series(name: "Done",            data: accepted(burndowns),  color: '#b2cefe')
+      f.series(name: "Done",            data: accepted(burndowns),  color: '#f2a2e8')
+      f.series(name: "Impeded",         data: delivered(burndowns), color: '#b2cefe')
       f.series(name: "PPO Acceptance",  data: delivered(burndowns), color: '#baed91')
       f.series(name: "QE Testing",      data: finished(burndowns),  color: '#faf884')
       f.series(name: "DEV In Progress", data: started(burndowns),   color: '#f8b88b')
@@ -68,7 +69,7 @@ module ChartHelper
     end
   
     def total_story_points(burndown)
-      burndown.nil?? 0 : (burndown.unstarted + burndown.started +
-      burndown.finished + burndown.delivered + burndown.accepted)
+      burndown.nil?? 0 : (burndown.unstarted + burndown.started + burndown.finished + 
+                          burndown.delivered + burndown.impeded + burndown.accepted)
     end 
 end

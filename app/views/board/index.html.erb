@@ -17,8 +17,8 @@
                stories: @current.delivered_stories,
                story_points: @current.delivered_story_points%>
     <%= render "backlog", id: "impeded", state: "Impeded",
-               stories: @current.delivered_stories,
-               story_points: @current.delivered_story_points %>
+               stories: @current.impeded_stories,
+               story_points: @current.impeded_story_points %>
     <%= render "backlog", id: "done", state: "Done",
                stories: @current.accepted_stories,
                story_points: @current.accepted_story_points %>
