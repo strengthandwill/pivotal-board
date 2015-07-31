@@ -1,11 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <% if @team.nil? %>
-        <%= link_to "Pivotal Board", root_url, class: "navbar-brand" %>
-      <% else %>
-        <%= link_to "#{yield :title}", "", class: "navbar-brand", onclick: "history.go(0)" %>
-      <% end %>
+      <%= link_to "#{yield :title}", "", class: "navbar-brand", onclick: "history.go(0)" %>
       <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" 
               data-toggle="collapse" class="navbar-toggle collapsed" type="button">
         <span class="sr-only">Toggle navigation</span>

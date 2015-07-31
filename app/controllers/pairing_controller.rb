@@ -1,6 +1,5 @@
 class PairingController < ApplicationController
   def index
-    @team = team_param
     @members = members
     @stamps = 4
   end

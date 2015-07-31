@@ -1,4 +1,8 @@
-<% provide :title, "#{@team.capitalize} Scrum Board" %>
+<% if @team.nil? %>
+  <% provide :title, "Overall Scrum Board" %>
+<% else %>
+  <% provide :title, "#{@team.capitalize} Scrum Board" %>
+<% end %>
 <div id="board" class="row-fluid">
     <%= render "backlog", state: "DEV To Do", tooltip: "Unstarted or Rejected in PivotalTracker", 
                stories: @current.unstarted_stories, 

@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_person!
-  before_action :teams
+  before_action :team_param
   
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -10,13 +10,10 @@ class ApplicationController < ActionController::Base
   include PivotalApiHelper
   
   protected
-    def teams
-      @teams = ENV["teams"].split(",")
-    end
-  
     def team_param
+      @teams = ENV["teams"].split(",")
       team = params[:team]
-      @teams.include?(team)?team:@teams[0]
+      @team = @teams.include?(team )? team:nil
     end
 
     def configure_permitted_parameters
