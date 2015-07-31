@@ -9,7 +9,7 @@
 </head>
 <body >
   <%= render "layouts/header" %>
-  <div class="container-fluid content">
+  <div id="<%= "#{controller_name}" %>" class="container-fluid content">
     <%= yield %>  
   </div>
 </body>

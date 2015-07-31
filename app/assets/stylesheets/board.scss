@@ -1,6 +1,8 @@
 #board {
   @extend .full-height;
   
+  .row-fluid { @extend .full-height; }
+  
   .feature { background-color: $feature-color; }
 
   .chore { background-color: $chore-color; }

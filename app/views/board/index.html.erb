@@ -3,7 +3,7 @@
 <% else %>
   <% provide :title, "#{@team.capitalize} Scrum Board" %>
 <% end %>
-<div id="board" class="row-fluid">
+<div class="row-fluid">
     <%= render "backlog", state: "DEV To Do", tooltip: "Unstarted or Rejected in PivotalTracker", 
                stories: @current.unstarted_stories, 
                story_points: @current.unstarted_story_points, 
