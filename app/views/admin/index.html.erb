@@ -1,0 +1,23 @@
+<%= link_to "Reload People", "/admin/reload", class: "btn btn-primary" %>
+<div class="panel">
+  <div class="panel-body">
+    <table class="table table-hover">
+      <tr>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Admin</th>
+      </tr>
+      <% @people.each do |person| %>
+        <tr>
+          <td><img src="<%= person.image_path %>" alt="No image" width="50" height="50" /></td>
+          <td><%= person.name %></td>
+          <td><%= person.username %></td>
+          <td><%= person.email %></td>
+          <td><%= (person.admin?? "Yes": "No") %></td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

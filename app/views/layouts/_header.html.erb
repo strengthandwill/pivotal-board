@@ -22,6 +22,9 @@
       <ul class="nav navbar-nav navbar-right">
         <% if person_signed_in? %>
             <li><%= link_to "Welcome #{current_person.name}!", edit_person_registration_path %></li>
+            <% if current_person.admin? %>
+              <li><%= link_to "Admin", "/admin" %></li>
+            <% end %>
             <li><%= link_to "Sign out", destroy_person_session_path, method: :delete%></li>
         <% else %>
           <li><%= link_to "Sign in", new_person_session_path %></li>

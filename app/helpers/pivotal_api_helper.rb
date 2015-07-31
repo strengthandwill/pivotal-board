@@ -16,7 +16,7 @@ module PivotalApiHelper
     person
   end
 
-  def persons
+  def people
     response = RestClient.get "#{ENV["pivotal_api_url"]}/accounts/#{ENV["pivotal_api_account_id"]}/memberships",
                               {:'X-TrackerToken' => ENV["pivotal_api_token"]}
     JSON.parse(response).each do |person_params|

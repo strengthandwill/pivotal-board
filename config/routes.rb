@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get '/admin'        => 'admin#index'
+  get '/admin/reload' => 'admin#reload'
+
   devise_for :people
-  as :user do
-    get 'users/edit' => 'devise/registrations#edit', :as => 'edit_person_registration'
-    put 'users' => 'devise/registrations#update', :as => 'person_registration'
+  as :person do
+    get 'people/edit' => 'devise/registrations#edit',   :as => 'edit_person_registration'
+    put 'people'      => 'devise/registrations#update', :as => 'person_registration'
   end
   
   root to: redirect('board/bahamut')

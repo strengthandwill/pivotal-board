@@ -4,4 +4,5 @@ Person.create!(person_id:             1,
                email:                 "admin@pivotal-board.com", 
                password:              "password", 
                password_confirmation: "password",
-               image_path:            "https://dl.dropboxusercontent.com/u/20646265/IDA/kah-kong.png")
+               image_path:            "http://en.gravatar.com/algomized",
+               admin:                 true)

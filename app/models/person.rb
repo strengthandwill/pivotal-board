@@ -1,5 +1,6 @@
 class Person < ActiveRecord::Base
   include ImagesHelper
+  after_initialize :defaults
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -15,4 +16,13 @@ class Person < ActiveRecord::Base
                       password_confirmation: ENV["default_password"],
                       image_path:            person_image_path(params["name"]))
   end
+
+  def admin?
+    !self.admin == nil? && self.admin == true
+  end
+  
+  private
+    def defaults
+      self.admin ||= false
+    end
 end
