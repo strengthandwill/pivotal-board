@@ -12,13 +12,13 @@ module ChartHelper
       f.plotOptions(area: { stacking: "normal", lineColor: "#666666", lineWidth: 1,
                             marker: { lineWidth: 1, lineColor: "#666666" } })
       f.tooltip(shared: true, valueSuffix: " sp")
-      f.legend(align: "right", verticalAlign: "top", y: 75, x: -50, layout: "vertical")
+      f.legend(verticalAlign: 'bottom', align:'center', y: 0, x: 0, layout: "vertical")
       f.chart({ defaultSeriesType: "area" })
-      f.series(name: "Done",            data: accepted(burndowns))
-      f.series(name: "PPO Acceptance",  data: delivered(burndowns))
-      f.series(name: "QE Testing",      data: finished(burndowns))
-      f.series(name: "DEV In Progress", data: started(burndowns))
-      f.series(name: "DEV To Do",       data: unstarted(burndowns))
+      f.series(name: "Done",            data: accepted(burndowns),  color: '#b2cefe')
+      f.series(name: "PPO Acceptance",  data: delivered(burndowns), color: '#baed91')
+      f.series(name: "QE Testing",      data: finished(burndowns),  color: '#faf884')
+      f.series(name: "DEV In Progress", data: started(burndowns),   color: '#f8b88b')
+      f.series(name: "DEV To Do",       data: unstarted(burndowns), color: '#fea3aa')
       f.series(name: "Ideal",           data: planned, type: "line")
     end
   end
