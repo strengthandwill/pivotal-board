@@ -88,7 +88,6 @@ class Backlog
   def update_burndown
     today = Date.today
     if today.weekday?
-      debugger
       burndown = Burndown.find_by(team: @team, date: today)
       params = {  team: @team, date: today, unstarted: @unstarted_story_points,
                   started: @started_story_points, finished: @finished_story_points,
