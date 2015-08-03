@@ -6,3 +6,14 @@ Person.create!(person_id:             1,
                password_confirmation: "password",
                image_path:            "http://en.gravatar.com/algomized",
                admin:                 true)
+
+Color.create!(unstarted:  "#fea3aa",
+              started:    "#f8b88b",
+              finished:   "#faf884",
+              delivered:  "#baed91",
+              impeded:    "#b2cefe",
+              accepted:   "#f2a2e8",
+              feature:    "#dff0d8",
+              chore:      "#ffe082",
+              bug:        "#ffc0cb",
+              retro:      "#87cefa")

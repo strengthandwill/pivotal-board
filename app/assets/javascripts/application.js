@@ -16,5 +16,6 @@
 //= require bootstrap-sprockets
 //= require highcharts/highstock
 //= require highcharts/highcharts                                                           
-//= require highcharts/highcharts-more   
+//= require highcharts/highcharts-more  
+//= require colors
 //= require_tree .

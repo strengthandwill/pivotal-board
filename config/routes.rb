@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  get '/admin'        => 'admin#index'
-  get '/admin/reload' => 'admin#reload'
+  get   '/admin'        => 'admin#index'
+  get   '/admin/reload' => 'admin#reload'
+  patch '/admin/update' => 'admin#update_colors'
 
   devise_for :people
   as :person do

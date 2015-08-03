@@ -4,22 +4,25 @@
   <% provide :title, "#{@team.capitalize} Scrum Board" %>
 <% end %>
 <div class="row-fluid">
-    <%= render "backlog", id: "todo", state: "DEV To Do", 
+    <%= render "backlog", id: "unstarted", state: "DEV To Do", 
                stories: @current.unstarted_stories, 
                story_points: @current.unstarted_story_points %>
-    <%= render "backlog", id: "inprogress", state: "DEV In Progress",
+    <%= render "backlog", id: "started", state: "DEV In Progress",
                stories: @current.started_stories,
                story_points: @current.started_story_points %>
-    <%= render "backlog", id: "testing", state: "QE Testing",
+    <%= render "backlog", id: "finished", state: "QE Testing",
                stories: @current.finished_stories,
                story_points: @current.finished_story_points %>
-    <%= render "backlog", id: "acceptance", state: "PPO Acceptance",
+    <%= render "backlog", id: "delivered", state: "PPO Acceptance",
                stories: @current.delivered_stories,
                story_points: @current.delivered_story_points%>
     <%= render "backlog", id: "impeded", state: "Impeded",
                stories: @current.impeded_stories,
                story_points: @current.impeded_story_points %>
-    <%= render "backlog", id: "done", state: "Done",
+    <%= render "backlog", id: "accepted", state: "Done",
                stories: @current.accepted_stories,
                story_points: @current.accepted_story_points %>
 </div>
+<%= content_tag "div", id: "settings", data: {color: @color} do %>
+  <script> initBoardColors(); </script>
+<% end %>

@@ -1,7 +1,7 @@
 require 'ext/Date'
 
 module ChartHelper
-  def chart(team, start, finish)
+  def chart(team, start, finish, color)
     burndowns = burndowns(team, start)
     dates = dates(start, finish)
     planned = planned(total_story_points(burndowns[0]), dates.length)
@@ -14,12 +14,12 @@ module ChartHelper
       f.tooltip(shared: true, valueSuffix: " sp")
       f.legend(verticalAlign: 'bottom', align:'center', y: 0, x: 0, layout: "vertical")
       f.chart({ defaultSeriesType: "area" })
-      f.series(name: "Done",            data: accepted(burndowns),  color: '#f2a2e8')
-      f.series(name: "Impeded",         data: delivered(burndowns), color: '#b2cefe')
-      f.series(name: "PPO Acceptance",  data: delivered(burndowns), color: '#baed91')
-      f.series(name: "QE Testing",      data: finished(burndowns),  color: '#faf884')
-      f.series(name: "DEV In Progress", data: started(burndowns),   color: '#f8b88b')
-      f.series(name: "DEV To Do",       data: unstarted(burndowns), color: '#fea3aa')
+      f.series(name: "Done",            data: accepted(burndowns),  color: color.accepted)
+      f.series(name: "Impeded",         data: impeded(burndowns),   color: color.impeded)
+      f.series(name: "PPO Acceptance",  data: delivered(burndowns), color: color.delivered)
+      f.series(name: "QE Testing",      data: finished(burndowns),  color: color.finished)
+      f.series(name: "DEV In Progress", data: started(burndowns),   color: color.started)
+      f.series(name: "DEV To Do",       data: unstarted(burndowns), color: color.unstarted)
       f.series(name: "Ideal",           data: planned, type: "line")
     end
   end
@@ -43,6 +43,10 @@ module ChartHelper
   
     def delivered(burndowns)
       burndowns.collect { |burndown| burndown.delivered }
+    end
+
+    def impeded(burndowns)
+      burndowns.collect { |burndown| burndown.impeded }
     end
   
     def accepted(burndowns)

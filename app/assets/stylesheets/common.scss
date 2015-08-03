@@ -1,18 +1,3 @@
-/* palette */
-$feature-color:           #DFF0D8;
-$feature-secondary-color: darkseagreen;
-$chore-color:             #FFE082;
-$bug-color:               pink;
-$retro-color:             lightskyblue;
-$impeded-color:           brown;
-
-$rainbow-red:    #fea3aa;
-$rainbow-orange: #f8b88b;
-$rainbow-yellow: #faf884;
-$rainbow-green:  #baed91;
-$rainbow-blue:   #b2cefe;
-$rainbow-violet: #f2a2e8;
-
 /* content */
 .content { margin-top: 60px; }
 
@@ -24,24 +9,29 @@ html, body, .container-fluid { @extend .full-height; }
 
 .alert-alert { @extend .alert-danger;  }
 
-@mixin flashing-background($from, $to) {
-  background-color: $from;
-  -webkit-animation-name: flashing; /* Chrome, Safari, Opera */
-  -webkit-animation-duration: 1s;   /* Chrome, Safari, Opera */
-  animation-name: flashing;
-  animation-duration: 1s;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+.blink{
+  -webkit-animation: blink 500ms infinite alternate;
+  -moz-animation: blink 500ms infinite alternate;
+  -o-animation: blink 500ms infinite alternate;
+  animation: blink 500ms infinite alternate;
+}
 
-  /* Chrome, Safari, Opera */
-  @-webkit-keyframes flashing {
-    from {background-color: $from;}
-    to {background-color: $to;}
-  }
+@-webkit-keyframes blink {
+  from { opacity:1; }
+  to { opacity:0.75; }
+}
 
-  /* Standard syntax */
-  @keyframes flashing {
-    from {background-color: $from;}
-    to {background-color: $to;}
-  }
+@-o-keyframes blink {
+  from { opacity:1; }
+  to { opacity:0.75; }
+}
+
+@-moz-keyframes blink {
+  from { opacity:1; }
+  to { opacity:0.75; }
+}
+
+@keyframes blink {
+  from { opacity:1; }
+  to { opacity:0.75; }
 }

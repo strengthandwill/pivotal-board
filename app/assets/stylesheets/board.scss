@@ -1,9 +1,4 @@
 #board {
-  @mixin backlog-background($base-color) {
-    > .panel-heading { background-color: $base-color; }
-    > .panel-body    { background-color: lighten($base-color, 15%); }
-  }
-
   @extend .full-height;
   .row-fluid { @extend .full-height; }
   .backlog {
@@ -15,21 +10,9 @@
     }
   }
   
-  #todo       { @include backlog-background($rainbow-red); }
-  #inprogress { @include backlog-background($rainbow-orange); }
-  #testing    { @include backlog-background($rainbow-yellow); }
-  #acceptance { @include backlog-background($rainbow-green); }
-  #impeded    { @include backlog-background($rainbow-blue); }
-  #done       { @include backlog-background($rainbow-violet); }
-  
-  .feature { background-color: $feature-color; }
-  .chore   { background-color: $chore-color; }
-  .bug     { background-color: $bug-color; }
-  .retro   { background-color: $retro-color; }
-  .rejected { @include flashing-background($feature-color, $feature-secondary-color) }
-  
-  .story-id { background-color: orange }
-  .story-points { background-color: cyan }
+  .rejected { @extend .blink; }
+  .story-id { background-color: orange; }
+  .story-points { background-color: cyan; }
   .story:hover {
     border-style: solid;
     border-width: 5px;

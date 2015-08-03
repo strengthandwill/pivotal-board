@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150731161742) do
+ActiveRecord::Schema.define(version: 20150804000406) do
 
   create_table "burndowns", force: :cascade do |t|
     t.string   "team"
@@ -24,6 +24,22 @@ ActiveRecord::Schema.define(version: 20150731161742) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "impeded"
+  end
+
+  create_table "colors", force: :cascade do |t|
+    t.string   "unstarted"
+    t.string   "started"
+    t.string   "finished"
+    t.string   "delivered"
+    t.string   "impeded"
+    t.string   "accepted"
+    t.string   "feature"
+    t.string   "chore"
+    t.string   "bug"
+    t.string   "retro"
+    t.string   "rejected"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "people", force: :cascade do |t|
