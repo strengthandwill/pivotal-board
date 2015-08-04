@@ -35,7 +35,7 @@ function changeBackgroundColor(story, color) {
   story.css("background-color", color)
 }
 
-var lightenDarkenColor = function (color, amount) {
+function lightenDarkenColor (color, amount) {
   var usePound = false;
   if (color[0] == "#") {
     color = color.slice(1);

@@ -1,12 +1,12 @@
 class AdminController < ApplicationController
   include PivotalApiHelper
   def index
-    @color = Color.first
+    @color = color
     @people = Person.all
   end
   
   def update_colors
-    @color = Color.first
+    @color = color
     @color.update(color_params)
     redirect_to action: :index
   end

@@ -28,4 +28,9 @@ class ApplicationController < ActionController::Base
                                                                      :current_password,
                                                                      :image_path) }
     end
+
+    private
+    def color
+      Color.last
+    end
 end
