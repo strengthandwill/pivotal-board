@@ -15,6 +15,7 @@ gem 'lazy_high_charts'
 gem 'figaro'
 gem 'devise'
 gem 'seed_dump'
+gem 'react-rails',          '~> 1.0'
 
 group :development, :test do
   gem 'sqlite3'

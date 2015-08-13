@@ -3,4 +3,8 @@ class BoardController < ApplicationController
     @color = color
     @current = backlog(@team)
   end
+  
+  def react
+    @current = backlog(@team)
+  end
 end
