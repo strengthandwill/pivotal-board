@@ -16,6 +16,7 @@ gem 'figaro'
 gem 'devise'
 gem 'seed_dump'
 gem 'react-rails',          '~> 1.0'
+gem 'marked-rails'
 
 group :development, :test do
   gem 'sqlite3'
