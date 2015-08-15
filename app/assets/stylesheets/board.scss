@@ -1,6 +1,5 @@
 #board {
   @extend .full-height;
-  .row-fluid { @extend .full-height; }
   > div, .board { @extend .full-height; }
   
   .backlog {
@@ -21,5 +20,5 @@
     border-color: red;
   }
 
-  .modal { font-size: 300%; }
+  .modal { font-size: 200%; }
 }
