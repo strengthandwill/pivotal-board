@@ -6,6 +6,11 @@ class Story
                 :estimate, :accepted_at, :requested_by_id, :owned_by_id, :owner_ids, :labels, 
                 :created_at, :updated_at, :url, :owners
   
+  def initialize(options = {})
+    super(options)
+    self.story_type = "retro" if include_label?("retrospective?")
+  end
+  
   def owners
     @owners ||= []
   end

@@ -21,5 +21,4 @@
 //= require highcharts/highcharts                                                           
 //= require highcharts/highcharts-more 
 //= require marked
-//= require colors
 //= require_tree .

@@ -4,7 +4,7 @@ Person.create!(person_id:             1,
                email:                 "admin@pivotal-board.com", 
                password:              "password", 
                password_confirmation: "password",
-               image_path:            "http://en.gravatar.com/algomized",
+               image_path:            "http://0.gravatar.com/avatar/3e19295dccfa74209884cf0801dbc9ee",
                admin:                 true)
 
 Color.create!(unstarted:  "#fea3aa",

@@ -34,11 +34,10 @@ StoryModal = React.createClass({
   },
   render: function() {
     return (
-      <div className="modal fade" id={createModalStoryId(this.props.story.id, false)} 
-        tabIndex="-1" role="dialog">
-        <div className="modal-dialog modal-lg" role="document">
+      <div className="modal fade" id={createModalStoryId(this.props.story.id, false)}>
+        <div className="modal-dialog modal-lg">
           <div className="modal-content">
-            <div className="modal-body">
+            <div className={"modal-body" + storyClassName(this.props.story)}>
               <span><strong>{this.props.story.name}</strong></span>
               <span className="story-id">{this.props.story.id}</span>
               {this.renderStoryPoints()}

@@ -23,7 +23,7 @@ StoryPanel = React.createClass({
     return (
       <div className="story-panel panel panel-default" data-toggle="modal" 
         data-target={createModalStoryId(this.props.story.id, true)}>
-        <div className="panel-body">
+        <div className={"panel-body " + storyClassName(this.props.story)}>
           <span><strong>{this.props.story.name}</strong></span>
           <span className="story-id">{this.props.story.id}</span>
           {this.renderStoryPoints()}

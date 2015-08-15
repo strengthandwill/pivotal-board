@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
     end
 
     private
-    def color
+    def colors
       Color.last
     end
 end
