@@ -8,4 +8,8 @@ class BoardController < ApplicationController
     @current = backlog(@team)
     @colors = colors
   end
+  
+  def stories
+    render json: backlog(@team)
+  end
 end

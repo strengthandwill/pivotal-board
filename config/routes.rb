@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get '/chart/:team'   => 'chart#index'
   get '/list/:team'    => 'list#index'
   
-  get '/react'        => 'board#react'
+  get '/react/:team'         => 'board#react'
+  get '/board/stories/:team' => 'board#stories'
 end
