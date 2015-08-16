@@ -1,8 +1,16 @@
 Story = React.createClass({
+  initStoryColor: function() {
+    changeStoryColor($(".feature"), this.props.colors.feature);
+    changeStoryColor($(".chore"),   this.props.colors.chore);
+    changeStoryColor($(".bug"),     this.props.colors.bug);
+    changeStoryColor($(".retro"),   this.props.colors.retro);
+  },
+  componentDidMount: function() {
+    this.initStoryColor();
+  },
   render: function() {
-    //var storyClassName = " " + this.props.story.story_type + " " + this.props.story.current_state;
     return(
-      <div className="story">
+      <div className="story" key={parseInt(this.props.story.id)}>
         <StoryPanel story={this.props.story} />
         <StoryModal story={this.props.story} />
       </div>

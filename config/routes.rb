@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   root to: redirect('board/bahamut')
   get '/board'         => 'board#index'
   get '/board/:team'   => 'board#index'
+  get '/board/stories/:team' => 'board#stories'
   get '/chart/:team'   => 'chart#index'
   get '/list/:team'    => 'list#index'
-  
-  get '/react/:team'         => 'board#react'
-  get '/board/stories/:team' => 'board#stories'
 end

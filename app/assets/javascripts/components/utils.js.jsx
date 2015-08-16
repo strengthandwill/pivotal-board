@@ -2,6 +2,15 @@ createModalStoryId = function(id, hex) {
   return (hex ? "#":"") + id + "-modal";
 };
 
+createSubStoryId = function(id, subId, hex) {
+  var newId = id + subId;
+  if (hex) {
+    return "#" + newId;
+  } else {
+    return parseInt(newId);
+  }
+};
+
 createMarkup = function(content) {
   return {__html: marked(content, {sanitize: true})}
 };
