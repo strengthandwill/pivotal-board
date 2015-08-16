@@ -1,6 +1,6 @@
 var Backlog = React.createClass({
   render: function() {
-    var colors = this.props.colors;
+    var settings = this.props.settings;
     return (
       <div id={this.props.id} className="backlog panel panel-default col-md-2">
         <div className="panel-heading">
@@ -9,7 +9,7 @@ var Backlog = React.createClass({
         </div>
         <div className="panel-body">
           {this.props.stories != null && this.props.stories.map(function(story, i) {
-            return <Story story={story} colors={colors} key={i} />;
+            return <Story story={story} settings={settings} key={i} />;
           })}
         </div>
       </div>

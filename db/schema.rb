@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804000406) do
+ActiveRecord::Schema.define(version: 20150816140609) do
 
   create_table "burndowns", force: :cascade do |t|
     t.string   "team"
@@ -24,22 +24,6 @@ ActiveRecord::Schema.define(version: 20150804000406) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "impeded"
-  end
-
-  create_table "colors", force: :cascade do |t|
-    t.string   "unstarted"
-    t.string   "started"
-    t.string   "finished"
-    t.string   "delivered"
-    t.string   "impeded"
-    t.string   "accepted"
-    t.string   "feature"
-    t.string   "chore"
-    t.string   "bug"
-    t.string   "retro"
-    t.string   "rejected"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "people", force: :cascade do |t|
@@ -65,5 +49,21 @@ ActiveRecord::Schema.define(version: 20150804000406) do
   add_index "people", ["email"], name: "index_people_on_email", unique: true
   add_index "people", ["reset_password_token"], name: "index_people_on_reset_password_token", unique: true
   add_index "people", ["username"], name: "index_people_on_username", unique: true
+
+  create_table "settings", force: :cascade do |t|
+    t.string   "unstarted_color"
+    t.string   "started_color"
+    t.string   "finished_color"
+    t.string   "delivered_color"
+    t.string   "impeded_color"
+    t.string   "accepted_color"
+    t.string   "feature_color"
+    t.string   "chore_color"
+    t.string   "bug_color"
+    t.string   "retro_color"
+    t.integer  "interval"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
 end

@@ -1,9 +1,9 @@
 Story = React.createClass({
   initStoryColor: function() {
-    changeStoryColor($(".feature"), this.props.colors.feature);
-    changeStoryColor($(".chore"),   this.props.colors.chore);
-    changeStoryColor($(".bug"),     this.props.colors.bug);
-    changeStoryColor($(".retro"),   this.props.colors.retro);
+    changeStoryColor($(".feature"), this.props.settings.feature_color);
+    changeStoryColor($(".chore"),   this.props.settings.chore_color);
+    changeStoryColor($(".bug"),     this.props.settings.bug_color);
+    changeStoryColor($(".retro"),   this.props.settings.retro_color);
   },
   componentDidMount: function() {
     this.initStoryColor();

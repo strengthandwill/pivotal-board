@@ -3,4 +3,4 @@
 <% else %>
   <% provide :title, "#{@team.capitalize} Scrum Board" %>
 <% end %>
-<%= react_component 'Board', { team: @team, backlog: @current, colors: @colors, reload: @reload } %>
+<%= react_component 'Board', { team: @team, backlog: @current, settings: @settings } %>

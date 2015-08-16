@@ -1,8 +1,7 @@
 class BoardController < ApplicationController
   def index
     @current = backlog(@team)
-    @colors = colors
-    @reload = 10
+    @settings = settings
   end
   
   def stories
