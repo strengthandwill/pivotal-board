@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   include PivotalApiHelper
   def index
-    # @color = color
+    @settings = Setting.last
     @people = Person.all
   end
   

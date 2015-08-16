@@ -27,16 +27,20 @@ People = React.createClass({
           <p><button className="btn btn-primary" onClick={this.handleOnClickReloadPeople}>Reload People</button></p>
     <p>
       <table className="table table-hover">
-        <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Admin</th>
-        </tr>
-        {this.state.people.map(function(person, key) {
-            return <PeopleRow person={person} key={key} />
-        })}
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Admin</th>
+          </tr>
+        </thead>
+        <tbody>
+          {this.state.people.map(function(person, key) {
+              return <PeopleRow person={person} key={key} />
+          })}
+        </tbody>
       </table>
     </p>
   </div>

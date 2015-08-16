@@ -24,8 +24,8 @@ changeBacklogColor = function(backlog, color) {
   backlog.find("> .panel-body").css("background-color", lightenDarkenColor(color, 50));
 };
 
-changeStoryColor = function(story, color) {
-  story.css("background-color", color);
+changeElementColor = function(element, color) {
+  element.css("background-color", color);
 };
 
 lightenDarkenColor = function(color, amount) {
