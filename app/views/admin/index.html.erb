@@ -1,3 +1,2 @@
 <% provide :title, "Admin" %>
-<%= render "colors" %>
-<%= render "people" %>
+<%= react_component "People", {people: @people} %>

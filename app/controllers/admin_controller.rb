@@ -1,7 +1,7 @@
 class AdminController < ApplicationController
   include PivotalApiHelper
   def index
-    @color = color
+    # @color = color
     @people = Person.all
   end
   
@@ -13,7 +13,7 @@ class AdminController < ApplicationController
   
   def reload
     people
-    redirect_to action: :index
+    render json: Person.all
   end
   
   private
