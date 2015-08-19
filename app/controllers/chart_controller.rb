@@ -3,12 +3,6 @@ class ChartController < ApplicationController
   
   def index
     current = backlog(@team)
-    @color = color
-    @chart = chart(@team, current.start, current.finish, color)
+    @chart = chart(@team, current.start, current.finish, settings)
   end
-
-  private
-    def color
-      Color.last
-    end
 end
