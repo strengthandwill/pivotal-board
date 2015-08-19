@@ -7,7 +7,6 @@ SettingsRow = React.createClass({
   handleOnSubmit: function(e) {
     e.preventDefault();
     var value = React.findDOMNode(this.refs[this.props.id]).value.trim();
-    console.log(value);
     $.ajax({
       url: "/admin/update",
       type: "PATCH",
