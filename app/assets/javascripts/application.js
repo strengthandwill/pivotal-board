@@ -13,12 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require marked
 //= require react
 //= require react_ujs
 //= require components
 //= require bootstrap-sprockets
 //= require highcharts/highstock
 //= require highcharts/highcharts                                                           
-//= require highcharts/highcharts-more 
-//= require marked
+//= require highcharts/highcharts-more
 //= require_tree .
