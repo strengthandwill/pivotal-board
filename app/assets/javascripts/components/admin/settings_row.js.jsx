@@ -7,12 +7,14 @@ SettingsRow = React.createClass({
   handleOnSubmit: function(e) {
     e.preventDefault();
     var value = React.findDOMNode(this.refs[this.props.id]).value.trim();
+    var setting = {};
+    setting[this.props.id] = value;
     $.ajax({
       url: "/admin/update",
       type: "PATCH",
       dataType: "json",
       cache: false,
-      data: {setting: {[this.props.id]: value }},
+      data: {setting: setting},
       success: function(data) {
         this.setState({value: value});
       }.bind(this),

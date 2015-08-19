@@ -5,7 +5,7 @@ People = React.createClass({
       dataType: "json",
       cache: false,
       success: function(data) {
-        this.setState({people: data})
+        this.setState({people: data});
         alert("Reload " + data.length + " people complete!");
       }.bind(this),
       error: function(xhr, status, err) {
