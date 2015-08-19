@@ -1,14 +1,18 @@
 class AdminController < ApplicationController
   include PivotalApiHelper
   def index
-    @settings = Setting.last
+    @settings = settings
     @people = Person.all
   end
   
-  def update_colors
-    @color = color
-    @color.update(color_params)
-    redirect_to action: :index
+  def update_settings
+    @settings = settings
+    if @settings.update(settings_params)
+      render json: {status: "success"}
+    else
+      render json: {status: "failure"}
+    end
+    
   end
   
   def reload
@@ -17,9 +21,10 @@ class AdminController < ApplicationController
   end
   
   private
-    def color_params
-      params.require(:color).permit(:unstarted, :started, :finished, 
-                                    :delivered, :impeded, :accepted,
-                                    :feature, :chore, :bug, :retro)
+    def settings_params
+      params.require(:setting).permit(:unstarted_color, :started_color, :finished_color, 
+                                      :delivered_color, :impeded_color, :accepted_color,
+                                      :feature_color, :chore_color, :bug_color, :retro_color, 
+                                      :interval)
     end
 end

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get   '/admin'        => 'admin#index'
   get   '/admin/reload' => 'admin#reload'
-  patch '/admin/update' => 'admin#update_colors'
+  patch '/admin/update' => 'admin#update_settings'
 
   devise_for :people
   as :person do
@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   end
   
   root to: redirect('board/bahamut')
-  get '/board'         => 'board#index'
-  get '/board/:team'   => 'board#index'
+  get '/board'               => 'board#index'
+  get '/board/:team'         => 'board#index'
   get '/board/stories/:team' => 'board#stories'
-  get '/chart/:team'   => 'chart#index'
-  get '/list/:team'    => 'list#index'
+  get '/chart/:team'         => 'chart#index'
+  get '/list/:team'          => 'list#index'
 end
