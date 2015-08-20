@@ -35,7 +35,7 @@ SettingsRow = React.createClass({
   render: function() {
     this.updateElementColor();
     return (
-      <form className="form-horizontal" onSubmit={this.handleOnSubmit}>
+      <form className="form-inline" onSubmit={this.handleOnSubmit}>
         <div className="form-group">
           <label id={this.labelId} for={this.props.id} 
                  className="col-sm-offset-3 col-sm-2 control-label">{this.props.name}</label>

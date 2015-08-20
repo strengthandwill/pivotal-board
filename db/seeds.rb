@@ -1,11 +1,11 @@
-# Person.create!(person_id:             1, 
-#                username:              "admin",
-#                name:                  "admin",
-#                email:                 "admin@pivotal-board.com", 
-#                password:              "password", 
-#                password_confirmation: "password",
-#                image_path:            "http://0.gravatar.com/avatar/3e19295dccfa74209884cf0801dbc9ee",
-#                admin:                 true)
+Person.create!(person_id:             1, 
+               username:              "admin",
+               name:                  "admin",
+               email:                 "admin@pivotal-board.com", 
+               password:              "password", 
+               password_confirmation: "password",
+               image_path:            "http://0.gravatar.com/avatar/3e19295dccfa74209884cf0801dbc9ee",
+               admin:                 true)
 
 Setting.create!(unstarted_color: "#fea3aa",
                 started_color:   "#f8b88b",

@@ -59,7 +59,7 @@ var Board = React.createClass({
           stories={this.state.backlog.finished_stories}
           story_points={this.state.backlog.finished_story_points}
           settings={this.props.settings} />
-        <Backlog name="PPO Acceptance" id="delivered"
+        <Backlog name="PPO Review" id="delivered"
           stories={this.state.backlog.delivered_stories}
           story_points={this.state.backlog.delivered_story_points}
           settings={this.props.settings} />

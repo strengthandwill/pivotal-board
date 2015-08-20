@@ -16,7 +16,7 @@ module ChartHelper
       f.chart({ defaultSeriesType: "area" })
       f.series(name: "Done",            data: accepted(burndowns),  color: settings.accepted_color)
       f.series(name: "Impeded",         data: impeded(burndowns),   color: settings.impeded_color)
-      f.series(name: "PPO Acceptance",  data: delivered(burndowns), color: settings.delivered_color)
+      f.series(name: "PPO Review",  data: delivered(burndowns), color: settings.delivered_color)
       f.series(name: "QE Testing",      data: finished(burndowns),  color: settings.finished_color)
       f.series(name: "DEV In Progress", data: started(burndowns),   color: settings.started_color)
       f.series(name: "DEV To Do",       data: unstarted(burndowns), color: settings.unstarted_color)
