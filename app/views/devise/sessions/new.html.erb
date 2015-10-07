@@ -1,4 +1,4 @@
-<% provide :title, "Please sign in:D" %>
+<% provide :title, "Please sign in" %>
 <%= render "layouts/messages" %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div><%= f.text_field :username, autofocus: true, placeholder: "Username", class: "form-control" %></div>
