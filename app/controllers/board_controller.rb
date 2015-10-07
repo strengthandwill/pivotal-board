@@ -3,6 +3,11 @@ class BoardController < ApplicationController
     @current = backlog(@team)
     @settings = settings
   end
+
+  def lite
+    @current = backlog(@team)
+    @settings = settings
+  end
   
   def stories
     render json: backlog(@team)

@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   get '/board/stories/:team' => 'board#stories'
   get '/chart/:team'         => 'chart#index'
   get '/list/:team'          => 'list#index'
+
+  get '/lite/:team'         => 'board#lite'
 end
