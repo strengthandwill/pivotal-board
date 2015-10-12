@@ -4,8 +4,16 @@ Settings = React.createClass({
       <div className="panel panel-default">
         <div className="panel-heading">Settings</div>
         <div className="panel-body">
+          <SettingsRow id="sprint_goal_bahamut" type="string" name="Bahamut Sprint Goal"
+            settings={this.props.settings}  />
+          <SettingsRow id="sprint_goal_omega" type="string" name="Omega Sprint Goal"
+            settings={this.props.settings}  />
+          <SettingsRow id="sprint_goal_challenger" type="string" name=" Challenger Sprint Goal"
+            settings={this.props.settings}  />
+          <hr />
           <SettingsRow id="interval" type="integer" name="Polling Interval (s)"
                       settings={this.props.settings}  />
+          <hr />
           <SettingsRow id="unstarted_color" type="color" name="DEV Todo"
                       settings={this.props.settings} />
           <SettingsRow id="started_color" type="color" name="DEV In Progress"

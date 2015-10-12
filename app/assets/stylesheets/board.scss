@@ -1,6 +1,6 @@
 #board {
   @extend .full-height;
-  > div, .board { @extend .full-height; }
+  .board { @extend .full-height; }
   
   .backlog {
     @extend .full-height;
