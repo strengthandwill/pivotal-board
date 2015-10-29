@@ -9,6 +9,8 @@ class Story
   def initialize(options = {})
     super(options)
     self.story_type = "retro" if include_label?("retrospective?")
+    self.name = self.name.gsub('Grant', 'Spaceship')
+    self.name = self.name.gsub('pplicant', 'stronaut')
   end
   
   def owners
