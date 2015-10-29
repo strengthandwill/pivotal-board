@@ -12,6 +12,7 @@ class Story
     self.name = self.name.gsub('Grant', 'Gundam')
     self.name = self.name.gsub('Applicant', 'Pilot')
     self.name = self.name.gsub('applicant', 'pilot')
+    self.name = self.name.gsub('fill in', 'pilot')
   end
   
   def owners
