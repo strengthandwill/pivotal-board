@@ -9,12 +9,12 @@ class Story
   def initialize(options = {})
     super(options)
     self.story_type = "retro" if include_label?("retrospective?")
-    self.name = self.name.gsub('Grant', 'Gundam')
-    self.name = self.name.gsub('Applicant', 'Pilot')
-    self.name = self.name.gsub('applicant', 'pilot')
-    self.name = self.name.gsub('fill in', 'pilot')
-    self.name = self.name.gsub('MRA', 'Celestial Being')
-    self.name = self.name.gsub('CDG', 'Coordinator')
+    # self.name = self.name.gsub('Grant', 'Gundam')
+    # self.name = self.name.gsub('Applicant', 'Pilot')
+    # self.name = self.name.gsub('applicant', 'pilot')
+    # self.name = self.name.gsub('fill in', 'pilot')
+    # self.name = self.name.gsub('MRA', 'Celestial Being')
+    # self.name = self.name.gsub('CDG', 'Coordinator')
   end
   
   def owners
