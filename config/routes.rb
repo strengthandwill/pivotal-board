@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
-  get   '/admin'        => 'admin#index'
-  get   '/admin/reload' => 'admin#reload'
-  patch '/admin/update' => 'admin#update_settings'
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
+  # get   '/admin'        => 'admin#index'
+  # get   '/admin/reload' => 'admin#reload'
+  # patch '/admin/update' => 'admin#update_settings'
 
   devise_for :people
   as :person do

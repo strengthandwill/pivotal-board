@@ -17,6 +17,7 @@ gem 'devise'
 gem 'seed_dump'
 gem 'react-rails',          '~> 1.0'
 gem 'marked-rails'
+gem 'rails_admin'
 
 group :development, :test do
   gem 'sqlite3'
