@@ -25,6 +25,6 @@ class AdminController < ApplicationController
       params.require(:setting).permit(:unstarted_color, :started_color, :finished_color, 
                                       :delivered_color, :impeded_color, :accepted_color,
                                       :feature_color, :chore_color, :bug_color, :retro_color, 
-                                      :interval, :sprint_goal_bahamut, :sprint_goal_omega, :sprint_goal_challenger)
+                                      :interval, :sprint_goal_bahamut, :sprint_goal_omega, :sprint_goal_challenger, :sprint_goal_constellation)
     end
 end

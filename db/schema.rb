@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151012082550) do
+ActiveRecord::Schema.define(version: 20151230081110) do
 
   create_table "burndowns", force: :cascade do |t|
     t.string   "team"
@@ -62,11 +62,12 @@ ActiveRecord::Schema.define(version: 20151012082550) do
     t.string   "bug_color"
     t.string   "retro_color"
     t.integer  "interval"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "sprint_goal_bahamut"
     t.string   "sprint_goal_omega"
     t.string   "sprint_goal_challenger"
+    t.string   "sprint_goal_constellation"
   end
 
 end

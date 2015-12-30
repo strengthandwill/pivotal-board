@@ -4,8 +4,10 @@ var SprintGoal = React.createClass({
       return this.props.settings.sprint_goal_bahamut
     } else if (this.props.team == "omega") {
       return this.props.settings.sprint_goal_omega
-    } if (this.props.team == "challenger") {
+    } else if (this.props.team == "challenger") {
       return this.props.settings.sprint_goal_challenger
+    } if (this.props.team == "constellation") {
+      return this.props.settings.sprint_goal_constellation
     }
   },
   render: function() {
