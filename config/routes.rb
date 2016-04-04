@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  # get   '/admin'        => 'admin#index'
-  # get   '/admin/reload' => 'admin#reload'
-  # patch '/admin/update' => 'admin#update_settings'
+  mount RailsAdmin::Engine => '/db', as: 'rails_admin'
+  get   '/admin'        => 'admin#index'
+  get   '/admin/reload' => 'admin#reload'
+  patch '/admin/update' => 'admin#update_settings'
 
   devise_for :people
   as :person do
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     put 'people'      => 'devise/registrations#update', :as => 'person_registration'
   end
   
-  root to: redirect('board/bahamut')
+  root to: redirect('board/1345356/bahamut')
   get '/board'               => 'board#index'
   get '/board/:project_id/:team'         => 'board#index'
   get '/board/stories/:project_id/:team' => 'board#stories'

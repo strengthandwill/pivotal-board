@@ -10,7 +10,7 @@ Settings = React.createClass({
             settings={this.props.settings}  />
           <SettingsRow id="sprint_goal_challenger" type="string" name=" Challenger Sprint Goal"
             settings={this.props.settings}  />
-          <SettingsRow id="sprint_goal_constellation" type="string" name=" Challenger Sprint Goal"
+          <SettingsRow id="sprint_goal_constellation" type="string" name=" Constellation Sprint Goal"
             settings={this.props.settings}  />          
           <hr />
           <SettingsRow id="interval" type="integer" name="Polling Interval (s)"

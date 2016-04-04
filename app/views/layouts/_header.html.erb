@@ -12,18 +12,30 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <% @teams.each do |team| %>
-          <li><%= link_to "#{team.capitalize} Board ", "../board/#{team}" %></li>
-        <% end %>
-        <% @teams.each do |team| %>
-          <li><%= link_to "#{team.capitalize} Chart", "../chart/#{team}" %></li>
-        <% end %>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boards <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% @teams.each do |team| %>
+              <li><%= link_to "#{team.capitalize} Board ", "../../board/#{team}" %></li>
+            <% end %>
+          </ul>
+        </li>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Charts <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <% @teams.each do |team| %>
+              <li><%= link_to "#{team.capitalize} Chart", "../../chart/#{team}" %></li>
+            <% end %>
+          </ul>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if person_signed_in? %>
             <li><%= link_to "Welcome #{current_person.name}!", edit_person_registration_path %></li>
             <% if current_person.admin? %>
               <li><%= link_to "Admin", "/admin" %></li>
+              <li><%= link_to "Database", "/db" %></li>            
             <% end %>
             <li><%= link_to "Sign out", destroy_person_session_path, method: :delete%></li>
         <% else %>

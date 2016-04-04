@@ -1,5 +1,6 @@
 class BoardController < ApplicationController
   before_action :set_project_id
+  before_action :set_team
   
   def index
       @current = backlog(@project_id, @team)
@@ -21,4 +22,11 @@ class BoardController < ApplicationController
       return root_url
     end
   end
+
+  def set_team
+    @team = params[:team]
+    unless @team
+      return root_url
+    end
+  end  
 end
