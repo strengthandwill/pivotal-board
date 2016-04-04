@@ -9,7 +9,7 @@ var BoardLite = React.createClass({
   },
   loadStoriesFromServer: function() {
     $.ajax({
-      url: "/board/stories/" + this.props.team,
+      url: "/board/stories/" + this.props.project_id + "/" + this.props.team,
       dataType: "json",
       cache: false,
       success: function(data) {

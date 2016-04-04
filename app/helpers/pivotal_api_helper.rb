@@ -1,7 +1,7 @@
 module PivotalApiHelper
-  def backlog(team)
+  def backlog(project_id, team)
     params = { scope: "current" }
-    response = RestClient.get "#{ENV["pivotal_api_url"]}/projects/#{ENV["pivotal_api_project_id"]}/iterations?#{params.to_query}",
+    response = RestClient.get "#{ENV["pivotal_api_url"]}/projects/#{project_id}/iterations?#{params.to_query}",
                               {:'X-TrackerToken' => ENV["pivotal_api_token"]}
     backlog_params = JSON.parse(response).first
     Backlog.new(backlog_params, @team, owners(backlog_params["stories"]))

@@ -3,5 +3,5 @@
 <% else %>
   <% provide :title, "#{@team.capitalize} Scrum Board" %>
 <% end %>
-<%= react_component 'SprintGoal', { team: @team, settings: @settings } %>
-<%= react_component 'Board', { team: @team, backlog: @current, settings: @settings }, class: "board" %>
+<%= react_component 'SprintGoal', { team: @team, project_id: @project_id, settings: @settings } %>
+<%= react_component 'Board', { team: @team, project_id: @project_id, backlog: @current, settings: @settings }, class: "board" %>
