@@ -11,9 +11,10 @@ class Backlog
   attr_accessor :unstarted_story_points, :started_story_points, :finished_story_points,
                 :delivered_story_points, :impeded_story_points, :accepted_story_points
   
-  def initialize(backlog_params, team, owners)
+  def initialize(backlog_params, project_id, team, owners)
     @start  = Date.parse(backlog_params["start"]) + 1
     @finish = Date.parse(backlog_params["finish"])
+    @project_id = project_id
     @team   = team
     @owners = owners
     convert_params_to_stories(backlog_params["stories"])
@@ -88,8 +89,8 @@ class Backlog
   def update_burndown
     today = Date.today
     if today.weekday?
-      burndown = Burndown.find_by(team: @team, date: today)
-      params = {  team: @team, date: today, unstarted: @unstarted_story_points,
+      burndown = Burndown.find_by(project_id: @project_id, team: @team, date: today)
+      params = {  project_id: @project_id, team: @team, date: today, unstarted: @unstarted_story_points,
                   started: @started_story_points, finished: @finished_story_points,
                   delivered: @delivered_story_points, impeded: @impeded_story_points,
                   accepted: @accepted_story_points }

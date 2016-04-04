@@ -4,7 +4,7 @@ module PivotalApiHelper
     response = RestClient.get "#{ENV["pivotal_api_url"]}/projects/#{project_id}/iterations?#{params.to_query}",
                               {:'X-TrackerToken' => ENV["pivotal_api_token"]}
     backlog_params = JSON.parse(response).first
-    Backlog.new(backlog_params, @team, owners(backlog_params["stories"]))
+    Backlog.new(backlog_params, project_id, team, owners(backlog_params["stories"]))
   end
   
   def person(person_id)
