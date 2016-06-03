@@ -11,11 +11,16 @@ Rails.application.routes.draw do
   end
   
   root to: redirect('board/1345356/bahamut')
-  get '/board'               => 'board#index'
-  get '/board/:project_id/:team'         => 'board#index'
-  get '/board/stories/:project_id/:team' => 'board#stories'
-  get '/chart/:project_id/:team'         => 'chart#index'
-  get '/list/:project_id/:team'          => 'list#index'
+  get '/board'                            => 'board#index'
+  get '/board/:project_id/:team'          => 'board#index'
+  get '/board/stories/:project_id/:team'  => 'board#stories'
 
-  get '/lite/:team'         => 'board#lite'
+  get '/kanban'                           => 'kanban#index'
+  get '/kanban/:project_id/:team'         => 'kanban#index'
+  get '/kanban/stories/:project_id/:team' => 'kanban#stories'
+  
+  get '/chart/:project_id/:team'          => 'chart#index'
+  get '/list/:project_id/:team'           => 'list#index'
+
+  get '/lite/:team'                       => 'board#lite'
 end
