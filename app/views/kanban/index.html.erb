@@ -3,4 +3,4 @@
 <% else %>
   <% provide :title, "#{@team.capitalize} Kanban Board" %>
 <% end %>
-<%= react_component 'Board', { team: @team, project_id: @project_id, backlog: @current, settings: @settings }, class: "board" %>
+<%= react_component 'KanbanBoard', { team: @team, project_id: @project_id, backlog: @current, settings: @settings }, class: "board" %>

@@ -1,4 +1,4 @@
-StoryModal = React.createClass({
+var KanbanStoryModal = React.createClass({
   renderStoryPoints: function() {
     if (!this.props.story.estimate!=null && this.props.story.estimate > 0) {
       return <span className="story-points">{this.props.story.estimate} sp</span>;

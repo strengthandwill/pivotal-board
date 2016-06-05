@@ -1,10 +1,6 @@
-StoryPanel = React.createClass({
+var KanbanStoryPanel = React.createClass({
   renderStoryPoints: function() {
-    if (!this.props.story.estimate!=null && this.props.story.estimate > 0) {
-      return <span className="story-points">{this.props.story.estimate} sp</span>;
-    } else {
-      return false;
-    }
+    return <span className="story-points"> {this.props.story.started_time} days </span>;
   },
   renderOwnerImages: function() {
     if (this.props.story.owners!= null && this.props.story.owners.length > 0) {
@@ -29,7 +25,6 @@ StoryPanel = React.createClass({
         data-target={modalId} id={panelId}>
         <div className={"panel-body " + storyClassName(this.props.story)}>
           <span><strong>{this.props.story.name}</strong></span><span> </span>
-          <span className="story-id">{this.props.story.id}</span><span> </span>
           {this.renderStoryPoints()}
           {this.renderOwnerImages()}
         </div>

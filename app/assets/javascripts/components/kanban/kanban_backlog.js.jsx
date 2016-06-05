@@ -1,4 +1,4 @@
-var Backlog = React.createClass({
+var KanbanBacklog = React.createClass({
   render: function() {
     var widthStyle = {
       width: '12.5%'
@@ -13,7 +13,7 @@ var Backlog = React.createClass({
         </div>
         <div className="panel-body">
           {this.props.stories != null && this.props.stories.map(function(story, i) {
-            return <Story story={story} settings={settings} key={i} />;
+            return <KanbanStory story={story} settings={settings} key={i} />;
           })}
         </div>
       </div>

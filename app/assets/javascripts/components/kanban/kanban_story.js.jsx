@@ -1,4 +1,4 @@
-Story = React.createClass({
+var KanbanStory = React.createClass({
   initStoryColor: function() {
     changeElementColor($(".feature"), this.props.settings.feature_color);
     changeElementColor($(".chore"),   this.props.settings.chore_color);
@@ -11,8 +11,8 @@ Story = React.createClass({
   render: function() {
     return(
       <div className="story" key={parseInt(this.props.story.id)}>
-        <StoryPanel story={this.props.story} />
-        <StoryModal story={this.props.story} />
+        <KanbanStoryPanel story={this.props.story} />
+        <KanbanStoryModal story={this.props.story} />
       </div>
     );
   }
