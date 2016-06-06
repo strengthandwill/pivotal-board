@@ -35,8 +35,7 @@ var KanbanBoard = React.createClass({
   componentDidMount: function() {
     this.setState({backlog: this.props.backlog});
     this.initBoardColors();
-    //this.timer = setInterval(this.loadStoriesFromServer, this.props.settings.interval*1000);
-    this.timer = setInterval(this.loadStoriesFromServer, 3000);
+    this.timer = setInterval(this.loadStoriesFromServer, this.props.settings.interval*1000);
   },
   componentWillUnmount: function() {
     clearInterval(this.timer);
