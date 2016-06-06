@@ -1,32 +1,30 @@
 class KanbanController < ApplicationController
-  before_action :set_project_id
   before_action :set_team
+  before_action :set_current
   
   def index
-    @current = backlog(@project_id, @team)
-    @settings = settings
-  end
-
-  def lite
-    @current = backlog(@project_id, @team)
     @settings = settings
   end
   
   def stories
-    render json: backlog(@project_id, @team)
+    render json: @current
   end
   
-  def set_project_id
-    @project_id = params[:project_id]
-    unless @project_id
-      return root_url
+  private
+    def set_team
+      @team = params[:team]
+      unless @team
+        return root_url
+      end
+    end 
+  
+    def set_current
+      project_ids = ENV[@team].split(",")
+      if project_ids && project_ids.count > 0
+        @current = backlog(project_ids.delete_at(0), @team)
+        project_ids.each do |project_id|
+          @current.merge(backlog(project_id, @team))
+        end
+      end
     end
-  end
-
-  def set_team
-    @team = params[:team]
-    unless @team
-      return root_url
-    end
-  end  
 end

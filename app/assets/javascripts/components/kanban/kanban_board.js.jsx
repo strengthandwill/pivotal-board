@@ -9,7 +9,7 @@ var KanbanBoard = React.createClass({
   },
   loadStoriesFromServer: function() {
     $.ajax({
-      url: "/kanban/stories/" + this.props.project_id + "/" + this.props.team,
+      url: "/kanban/stories/" + this.props.team,
       dataType: "json",
       cache: false,
       success: function(data) {

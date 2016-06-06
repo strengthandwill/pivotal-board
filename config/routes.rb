@@ -15,9 +15,9 @@ Rails.application.routes.draw do
   get '/board/:project_id/:team'          => 'board#index'
   get '/board/stories/:project_id/:team'  => 'board#stories'
 
-  get '/kanban'                           => 'kanban#index'
-  get '/kanban/:project_id/:team'         => 'kanban#index'
-  get '/kanban/stories/:project_id/:team' => 'kanban#stories'
+  get '/kanban'               => 'kanban#index'
+  get '/kanban/:team'         => 'kanban#index'
+  get '/kanban/stories/:team' => 'kanban#stories'
   
   get '/chart/:project_id/:team'          => 'chart#index'
   get '/list/:project_id/:team'           => 'list#index'
