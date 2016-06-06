@@ -81,6 +81,10 @@ class Story
     self.started_time
   end
   
+  def project_name=(value)
+    @project_name = value.split('-').last
+  end
+  
   private
     def milliseconds_to_days(milliseconds)
       (milliseconds / 86400000.0).round(1)

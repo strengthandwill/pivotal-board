@@ -11,7 +11,7 @@ class Backlog
   attr_accessor :unstarted_story_points, :started_story_points, :started_ror_story_points, :started_appian_story_points, :finished_story_points,
                 :delivered_story_points, :impeded_story_points, :accepted_story_points, :accepted_undeployed_story_points, :accepted_deployed_story_points
   
-  def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics)
+  def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics, update_burndown_enabled)
     @start  = Date.parse(backlog_params["start"]) + 1
     @finish = Date.parse(backlog_params["finish"])
     @project_id = project_id
@@ -20,7 +20,7 @@ class Backlog
     @owners = owners
     convert_params_to_stories(backlog_params["stories"], stories_with_analytics)
     categorize_stories_by_state
-    # update_burndown
+    update_burndown if update_burndown_enabled
   end
   
   def merge(backlog)
@@ -45,6 +45,16 @@ class Backlog
     self.accepted_story_points             += backlog.accepted_story_points
     self.accepted_undeployed_story_points  += backlog.accepted_undeployed_story_points
     self.accepted_deployed_story_points    += backlog.accepted_deployed_story_points
+
+    self.unstarted_stories.sort! { |a,b| b.started_time <=> a.started_time }
+    self.started_stories.sort! { |a,b| b.started_time <=> a.started_time }
+    self.started_ror_stories.sort! { |a,b| b.started_time <=> a.started_time }
+    self.started_appian_stories.sort! { |a,b| b.started_time <=> a.started_time }
+    self.finished_stories.sort! { |a,b| b.started_time <=> a.started_time }
+    self.delivered_stories.sort! { |a,b| b.started_time <=> a.started_time }
+    self.accepted_stories.sort! { |a,b| b.started_time <=> a.started_time }
+    self.accepted_undeployed_stories.sort! { |a,b| b.started_time <=> a.started_time }
+    self.accepted_deployed_stories.sort! { |a,b| b.started_time <=> a.started_time }    
   end
   
   private
@@ -145,18 +155,18 @@ class Backlog
       @accepted_deployed_stories.sort! { |a,b| b.started_time <=> a.started_time }
     end
 
-  # def update_burndown
-  #   today = Date.today
-  #   if today.weekday?
-  #     burndown = Burndown.find_by(project_id: @project_id, team: @team, date: today)
-  #     params = {  project_id: @project_id, team: @team, date: today, 
-  #                 unstarted: @unstarted_story_points, started: @started_story_points, finished: @finished_story_points,
-  #                 delivered: @delivered_story_points, impeded: @impeded_story_points, accepted: @accepted_story_points }
-  #     if burndown.nil?
-  #       Burndown.create(params)
-  #     else
-  #       burndown.update_attributes(params)
-  #     end
-  #   end
-  # end
+  def update_burndown
+    today = Date.today
+    if today.weekday?
+      burndown = Burndown.find_by(project_id: @project_id, team: @team, date: today)
+      params = {  project_id: @project_id, team: @team, date: today, 
+                  unstarted: @unstarted_story_points, started: @started_story_points, finished: @finished_story_points,
+                  delivered: @delivered_story_points, impeded: @impeded_story_points, accepted: @accepted_story_points }
+      if burndown.nil?
+        Burndown.create(params)
+      else
+        burndown.update_attributes(params)
+      end
+    end
+  end
 end

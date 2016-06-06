@@ -21,9 +21,9 @@ class KanbanController < ApplicationController
     def set_current
       project_ids = ENV[@team].split(",")
       if project_ids && project_ids.count > 0
-        @current = backlog(project_ids.delete_at(0), @team)
+        @current = backlog(project_ids.delete_at(0), @team, false)
         project_ids.each do |project_id|
-          @current.merge(backlog(project_id, @team))
+          @current.merge(backlog(project_id, @team, false))
         end
       end
     end

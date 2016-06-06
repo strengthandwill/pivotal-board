@@ -6,7 +6,7 @@ var KanbanStoryPanel = React.createClass({
         <p>
         {this.props.story.owners.map(function(owner, i) {
           var key = parseInt(storyId + i);
-          return <img src={owner.image_path} width="50" height="50" key={key} />
+          return <img src={owner.image_path} width="50" height="50" key={key} alt={owner.name} />
         })}
         </p>
       );
@@ -21,8 +21,8 @@ var KanbanStoryPanel = React.createClass({
       <div className="story-panel panel panel-default" data-toggle="modal" 
         data-target={modalId} id={panelId}>
         <div className={"panel-body " + storyClassName(this.props.story)}>
-          <span><strong>[{this.props.story.project_name}</strong></span><span>] </span>
-          <span><strong>{this.props.story.name}</strong></span><span> </span>
+          <span><i>[{this.props.story.project_name}]</i> </span>
+          <span><strong>{this.props.story.name}</strong> </span>
           <span className="story-points"> {this.props.story.started_time} days </span>
           {this.renderOwnerImages()}
         </div>
