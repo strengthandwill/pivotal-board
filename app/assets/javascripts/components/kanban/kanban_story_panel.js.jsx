@@ -23,6 +23,7 @@ var KanbanStoryPanel = React.createClass({
         <div className={"panel-body " + storyClassName(this.props.story)}>
           <span><i>[{this.props.story.project_name}]</i> </span>
           <span><strong>{this.props.story.name}</strong> </span>
+          <span className="story-id">{this.props.story.id}</span><span> </span>
           <span className="story-points"> {this.props.story.started_time} days </span>
           {this.renderOwnerImages()}
         </div>
