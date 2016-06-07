@@ -63,11 +63,11 @@ var KanbanBoard = React.createClass({
           stories={this.state.backlog.delivered_stories}
           story_points={this.state.backlog.delivered_stories.length}
           settings={this.props.settings} />
-        <KanbanBacklog name="Deployment" id="deployment"
+        <KanbanBacklog name="Done" id="done"
           stories={this.state.backlog.accepted_undeployed_stories}
           story_points={this.state.backlog.accepted_undeployed_stories.length}
           settings={this.props.settings} />
-        <KanbanBacklog name="Done"  id="accepted"
+        <KanbanBacklog name="Deployed"  id="deployed"
           stories={this.state.backlog.accepted_deployed_stories}
           story_points={this.state.backlog.accepted_deployed_stories.length}
           settings={this.props.settings} />
