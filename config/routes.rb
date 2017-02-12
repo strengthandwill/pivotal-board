@@ -10,17 +10,18 @@ Rails.application.routes.draw do
     put 'people'      => 'devise/registrations#update', :as => 'person_registration'
   end
   
+  # board
   root to: redirect('board/1345356/bahamut')
-  get '/board'                            => 'board#index'
-  get '/board/:project_id/:team'          => 'board#index'
-  get '/board/stories/:project_id/:team'  => 'board#stories'
+  get '/board/:project_id'         => 'board#index'
+  get '/board/stories/:project_id' => 'board#stories'
 
+  # kanban
   get '/kanban'               => 'kanban#index'
   get '/kanban/:team'         => 'kanban#index'
   get '/kanban/stories/:team' => 'kanban#stories'
   
-  get '/chart/:project_id/:team'          => 'chart#index'
-  get '/list/:project_id/:team'           => 'list#index'
-
-  get '/lite/:team'                       => 'board#lite'
+  
+  get '/chart/:project_id/:team' => 'chart#index'
+  get '/list/:project_id/:team'  => 'list#index'
+  get '/lite/:team'              => 'board#lite'
 end

@@ -3,17 +3,17 @@ class BoardController < ApplicationController
   before_action :set_team
   
   def index
-      @current = backlog(@project_id, @team, true)
-      @settings = settings
+    @current = backlog(@project_id, nil, false)
+    @settings = settings
   end
 
   def lite
-    @current = backlog(@project_id, @team, true)
+    @current = backlog(@project_id, nil, false)
     @settings = settings
   end
   
   def stories
-    render json: backlog(@project_id, @team, true)
+    render json: backlog(@project_id, nil, false)
   end
   
   def set_project_id
