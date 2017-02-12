@@ -15,17 +15,8 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Boards <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <% @teams.each do |team| %>
-              <li><%= link_to "#{team.capitalize} ", "../../board/#{team}" %></li>
-            <% end %>
-          </ul>
-        </li>
-
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Charts <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <% @teams.each do |team| %>
-              <li><%= link_to "#{team.capitalize}", "../../chart/#{team}" %></li>
+            <% @accounts.each do |account| %>
+              <li><%= link_to "#{account.project_name} (#{account.name})" , "../../board/#{account.path}" %></li>
             <% end %>
           </ul>
         </li>

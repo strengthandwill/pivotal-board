@@ -12,8 +12,8 @@ Rails.application.routes.draw do
   
   # board
   root to: redirect('board/1345356/bahamut')
-  get '/board/:project_id'         => 'board#index'
-  get '/board/stories/:project_id' => 'board#stories'
+  get '/board/:account_path'         => 'board#index'
+  get '/board/stories/:account_path' => 'board#stories'
 
   # kanban
   get '/kanban'               => 'kanban#index'

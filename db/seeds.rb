@@ -18,3 +18,7 @@ Setting.create!(unstarted_color: "#fea3aa",
                 bug_color:       "#ffc0cb",
                 retro_color:     "#87cefa",
                 interval:        5)
+
+Account.create(name: 'Reach', path: 'reach', project_name: 'BGP-Phase-2', project_id: 1963535)
+Account.create(name: 'Meteor', path: 'meteor', project_name: 'BGP-Dev-WOG-Productivity', project_id: 1784989)
+Account.create(name: 'Constellation', path: 'constellation', project_name: 'BGP-General', project_id: 1592917)

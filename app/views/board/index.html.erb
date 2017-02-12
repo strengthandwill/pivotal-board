@@ -1,7 +1,7 @@
-<% if @team.nil? %>
-  <% provide :title, "Overall Scrum Board" %>
+<% if @account.nil? %>
+  <% provide :title, 'Scrum Board' %>
 <% else %>
-  <% provide :title, "#{@team.capitalize} Scrum Board" %>
+  <% provide :title, "#{@account.project_name} (#{@account.name})" %>
 <% end %>
-<%= react_component 'SprintGoal', { team: @team, project_id: @project_id, settings: @settings } %>
-<%= react_component 'Board', { team: @team, project_id: @project_id, backlog: @current, settings: @settings }, class: "board" %>
+
+<%= react_component 'Board', { team: @team, project_id: @account.project_id, backlog: @current, settings: @settings }, class: "board" %>

@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160404065650) do
+ActiveRecord::Schema.define(version: 20170212133018) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "path"
+    t.string   "project_name"
+    t.integer  "project_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "burndowns", force: :cascade do |t|
     t.string   "team"
@@ -25,6 +34,15 @@ ActiveRecord::Schema.define(version: 20160404065650) do
     t.datetime "updated_at", null: false
     t.integer  "impeded"
     t.integer  "project_id"
+  end
+
+  create_table "migrations", force: :cascade do |t|
+    t.string   "account"
+    t.string   "name"
+    t.string   "path"
+    t.integer  "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "people", force: :cascade do |t|
@@ -45,6 +63,7 @@ ActiveRecord::Schema.define(version: 20160404065650) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  default: false
+    t.string   "image"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true

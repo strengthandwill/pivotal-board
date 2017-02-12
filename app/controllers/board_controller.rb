@@ -1,32 +1,24 @@
 class BoardController < ApplicationController
-  before_action :set_project_id
-  before_action :set_team
+  before_action :set_account
   
   def index
-    @current = backlog(@project_id, nil, false)
+    @current = backlog(@account.project_id, nil, false)
     @settings = settings
   end
 
   def lite
-    @current = backlog(@project_id, nil, false)
+    @current = backlog(@account.project_id, nil, false)
     @settings = settings
   end
   
   def stories
-    render json: backlog(@project_id, nil, false)
+    render json: backlog(@account.project_id, nil, false)
   end
   
-  def set_project_id
-    @project_id = params[:project_id]
-    unless @project_id
-      return root_url
+  def set_account
+    @account = Account.find_by(path: params[:account_path])
+    unless @account
+      return root_url  
     end
   end
-
-  def set_team
-    @team = params[:team]
-    unless @team
-      return root_url
-    end
-  end  
 end
