@@ -30,7 +30,8 @@ StoryPanel = React.createClass({
         <div className={"panel-body " + storyClassName(this.props.story)}>
           <span><strong>{this.props.story.name}</strong></span><span> </span>
           <span className="story-id">{this.props.story.id}</span><span> </span>
-          {this.renderStoryPoints()}
+          {this.renderStoryPoints()}&nbsp;
+          <span className="story-started-time">{this.props.story.started_time} days</span>
           {this.renderOwnerImages()}
         </div>
       </div> 
