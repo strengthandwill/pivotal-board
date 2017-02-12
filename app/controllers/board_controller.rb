@@ -1,6 +1,9 @@
 class BoardController < ApplicationController
   before_action :set_account
   
+  def home
+  end
+  
   def index
     @current = backlog(@account.project_id, nil, false)
     @settings = settings

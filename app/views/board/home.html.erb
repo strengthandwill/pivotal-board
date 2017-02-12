@@ -1,7 +1,2 @@
-<% if @account.nil? %>
-  <% provide :title, 'Scrum Board' %>
-<% else %>
-  <% provide :title, "#{@account.project_name} (#{@account.name})" %>
-<% end %>
-
-<%= react_component 'Board', { team: @team, project_id: @account.project_id, backlog: @current, settings: @settings }, class: "board" %>
+<% provide :title, 'Pivotal Board' %>
+<h1 align="center">Select one of the boards at the navigation bar to view.</h1>

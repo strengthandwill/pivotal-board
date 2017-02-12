@@ -11,17 +11,17 @@ Rails.application.routes.draw do
   end
   
   # board
-  root to: redirect('board/1345356/bahamut')
+  root to: 'board#home'
   get '/board/:account_path'         => 'board#index'
   get '/board/stories/:account_path' => 'board#stories'
 
   # kanban
-  get '/kanban'               => 'kanban#index'
-  get '/kanban/:team'         => 'kanban#index'
-  get '/kanban/stories/:team' => 'kanban#stories'
+  # get '/kanban'               => 'kanban#index'
+  # get '/kanban/:team'         => 'kanban#index'
+  # get '/kanban/stories/:team' => 'kanban#stories'
   
   
-  get '/chart/:project_id/:team' => 'chart#index'
-  get '/list/:project_id/:team'  => 'list#index'
-  get '/lite/:team'              => 'board#lite'
+  # get '/chart/:project_id/:team' => 'chart#index'
+  # get '/list/:project_id/:team'  => 'list#index'
+  # get '/lite/:team'              => 'board#lite'
 end
