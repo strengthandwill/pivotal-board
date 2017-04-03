@@ -34,6 +34,14 @@ StoryModal = React.createClass({
       return false;
     }
   },
+  renderStartedTime: function() {
+    var show_started_time = this.props.show_started_time;
+    if (show_started_time) {
+      return <span className="story-started-time">{this.props.story.started_time} days</span>;
+    } else {
+      return false;
+    }
+  },
   render: function() {
     var modelId = this.props.story.id + "-modal";
     return (
@@ -44,7 +52,7 @@ StoryModal = React.createClass({
               <span><strong>{this.props.story.name}</strong></span><span> </span>
               <span className="story-id">{this.props.story.id}</span><span> </span>
               {this.renderStoryPoints()}&nbsp;
-              <span className="story-started-time">{this.props.story.started_time} days</span>
+              {this.renderStartedTime()}
               {this.renderOwnerImages()}
               {this.renderDescription()}
             </div>

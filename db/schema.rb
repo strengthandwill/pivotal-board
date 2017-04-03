@@ -37,15 +37,6 @@ ActiveRecord::Schema.define(version: 20170302075251) do
     t.integer  "project_id"
   end
 
-  create_table "migrations", force: :cascade do |t|
-    t.string   "account"
-    t.string   "name"
-    t.string   "path"
-    t.integer  "project_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "people", force: :cascade do |t|
     t.integer  "person_id"
     t.string   "username"
@@ -64,7 +55,6 @@ ActiveRecord::Schema.define(version: 20170302075251) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "admin",                  default: false
-    t.string   "image"
   end
 
   add_index "people", ["email"], name: "index_people_on_email", unique: true

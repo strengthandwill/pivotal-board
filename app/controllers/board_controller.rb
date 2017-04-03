@@ -7,13 +7,14 @@ class BoardController < ApplicationController
   end
   
   def index
+    @show_started_time = ENV['show_started_time'] == 'true'? true : false
   end
 
   def lite
   end
   
   def stories
-    render json: backlog(project_ids, nil, false)
+    render json: @current
   end
   
   private

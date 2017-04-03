@@ -9,10 +9,11 @@ Story = React.createClass({
     this.initStoryColor();
   },
   render: function() {
+    var show_started_time = this.props.show_started_time;
     return(
       <div className="story" key={parseInt(this.props.story.id)}>
-        <StoryPanel story={this.props.story} />
-        <StoryModal story={this.props.story} />
+        <StoryPanel story={this.props.story} show_started_time={show_started_time} />
+        <StoryModal story={this.props.story} show_started_time={show_started_time} />
       </div>
     );
   }

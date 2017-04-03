@@ -9,7 +9,7 @@ var Board = React.createClass({
   },
   loadStoriesFromServer: function() {
     $.ajax({
-      url: "/board/stories/" + this.props.project_id + "/" + this.props.team,
+      url: "/board/stories/" + this.props.account_path,
       dataType: "json",
       cache: false,
       success: function(data) {
@@ -50,27 +50,33 @@ var Board = React.createClass({
         <Backlog name="DEV Todo" id="unstarted"
           stories={this.state.backlog.unstarted_stories}
           story_points={this.state.backlog.unstarted_story_points}
-          settings={this.props.settings} />
+          settings={this.props.settings}
+          show_started_time={this.props.show_started_time} />
         <Backlog name="DEV In Progress"  id="started"
           stories={this.state.backlog.started_stories}
           story_points={this.state.backlog.started_story_points}
-          settings={this.props.settings} />
+          settings={this.props.settings}
+          show_started_time={this.props.show_started_time} />
         <Backlog name="QE Testing" id="finished"
           stories={this.state.backlog.finished_stories}
           story_points={this.state.backlog.finished_story_points}
-          settings={this.props.settings} />
+          settings={this.props.settings}
+          show_started_time={this.props.show_started_time} />
         <Backlog name="PPO Review" id="delivered"
           stories={this.state.backlog.delivered_stories}
           story_points={this.state.backlog.delivered_story_points}
-          settings={this.props.settings} />
+          settings={this.props.settings}
+          show_started_time={this.props.show_started_time} />
         <Backlog name="Impeded"  id="impeded"
           stories={this.state.backlog.impeded_stories}
           story_points={this.state.backlog.impeded_story_points}
-          settings={this.props.settings} />
+          settings={this.props.settings}
+          show_started_time={this.props.show_started_time} />
         <Backlog name="Done"  id="accepted"
           stories={this.state.backlog.accepted_stories}
           story_points={this.state.backlog.accepted_story_points}
-          settings={this.props.settings} />
+          settings={this.props.settings}
+          show_started_time={this.props.show_started_time} />
       </div>
     );
   }
