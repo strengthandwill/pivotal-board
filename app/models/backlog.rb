@@ -32,6 +32,7 @@ class Backlog
     self.finished_stories            += backlog.finished_stories
     self.delivered_stories           += backlog.delivered_stories
     self.impeded_stories             += backlog.impeded_stories
+    self.accepted_stories            += backlog.accepted_stories
     self.accepted_undeployed_stories += backlog.accepted_undeployed_stories
     self.accepted_deployed_stories   += backlog.accepted_deployed_stories
 
