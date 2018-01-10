@@ -34,6 +34,19 @@ StoryModal = React.createClass({
       return false;
     }
   },
+  renderURL: function() {
+    if (this.props.story.description!=null) {
+      return (
+        <p>
+          <b>URL</b>
+          <br/>
+          <a href={this.props.story.url}>{this.props.story.url}</a>
+        </p>
+      );
+    } else {
+      return false;
+    }
+  },
   renderStartedTime: function() {
     var show_started_time = this.props.show_started_time;
     if (show_started_time) {
@@ -55,6 +68,7 @@ StoryModal = React.createClass({
               {this.renderStartedTime()}
               {this.renderOwnerImages()}
               {this.renderDescription()}
+              {this.renderURL()}
             </div>
           </div>
         </div>
