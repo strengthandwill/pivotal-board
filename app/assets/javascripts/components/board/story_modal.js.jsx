@@ -9,11 +9,16 @@ StoryModal = React.createClass({
   renderOwnerImages: function() {
     if (this.props.story.owners!= null && this.props.story.owners.length > 0) {
       var storyId = this.props.story.id;
+      var owner_image = this.props.owner_image;
       return (
         <p>
         {this.props.story.owners.map(function(owner, i) {
           var key = parseInt(storyId + i);
-          return <img src={owner.image_path} width="200" height="200" key={key} />
+          if (owner_image) {
+            return <img src={owner.image_path} width="200" height="200" key={key}/>
+          } else {
+            return <span className="owner-name">{owner.name}<br/></span>;
+          }
         })}
         </p>
       );

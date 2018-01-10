@@ -12,8 +12,8 @@ Story = React.createClass({
     var show_started_time = this.props.show_started_time;
     return(
       <div className="story" key={parseInt(this.props.story.id)}>
-        <StoryPanel story={this.props.story} show_started_time={show_started_time} />
-        <StoryModal story={this.props.story} show_started_time={show_started_time} />
+        <StoryPanel story={this.props.story} show_started_time={show_started_time} owner_image={this.props.owner_image} />
+        <StoryModal story={this.props.story} show_started_time={show_started_time} owner_image={this.props.owner_image} />
       </div>
     );
   }

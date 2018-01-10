@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180110143215) do
+ActiveRecord::Schema.define(version: 20180110163246) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180110143215) do
     t.string   "project_ids"
     t.boolean  "ror",          default: true
     t.boolean  "appian",       default: true
+    t.boolean  "owner_image",  default: true
   end
 
   create_table "burndowns", force: :cascade do |t|

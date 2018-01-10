@@ -51,32 +51,38 @@ var Board = React.createClass({
           stories={this.state.backlog.unstarted_stories}
           story_points={this.state.backlog.unstarted_story_points}
           settings={this.props.settings}
-          show_started_time={this.props.show_started_time} />
+          show_started_time={this.props.show_started_time}
+          owner_image={this.props.owner_image} />
         <Backlog name="DEV In Progress"  id="started"
           stories={this.state.backlog.started_stories}
           story_points={this.state.backlog.started_story_points}
           settings={this.props.settings}
-          show_started_time={this.props.show_started_time} />
+          show_started_time={this.props.show_started_time}
+          owner_image={this.props.owner_image} />
         <Backlog name="QE Testing" id="finished"
           stories={this.state.backlog.finished_stories}
           story_points={this.state.backlog.finished_story_points}
           settings={this.props.settings}
-          show_started_time={this.props.show_started_time} />
+          show_started_time={this.props.show_started_time}
+          owner_image={this.props.owner_image} />
         <Backlog name="PPO Review" id="delivered"
           stories={this.state.backlog.delivered_stories}
           story_points={this.state.backlog.delivered_story_points}
           settings={this.props.settings}
-          show_started_time={this.props.show_started_time} />
+          show_started_time={this.props.show_started_time}
+          owner_image={this.props.owner_image} />
         <Backlog name="Impeded"  id="impeded"
           stories={this.state.backlog.impeded_stories}
           story_points={this.state.backlog.impeded_story_points}
           settings={this.props.settings}
-          show_started_time={this.props.show_started_time} />
+          show_started_time={this.props.show_started_time}
+          owner_image={this.props.owner_image} />
         <Backlog name="Done"  id="accepted"
           stories={this.state.backlog.accepted_stories}
           story_points={this.state.backlog.accepted_story_points}
           settings={this.props.settings}
-          show_started_time={this.props.show_started_time} />
+          show_started_time={this.props.show_started_time}
+          owner_image={this.props.owner_image} />
       </div>
     );
   }
