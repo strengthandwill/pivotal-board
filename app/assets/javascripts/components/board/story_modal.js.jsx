@@ -45,7 +45,7 @@ StoryModal = React.createClass({
         <p>
           <b>URL</b>
           <br/>
-          <a href={this.props.story.url}>{this.props.story.url}</a>
+          <a href={this.props.story.url} target="_blank">{this.props.story.url}</a>
         </p>
       );
     } else {
