@@ -1,5 +1,5 @@
 module PivotalApiHelper
-  def backlog(project_id, team, update_burndown_enabled)
+  def backlog(project_id, team, update_burndown_enabled, ror, appian)
     project_name = project(project_id)['name']
     params = { scope: "current" }
     response = RestClient.get "#{ENV["pivotal_api_url"]}/projects/#{project_id}/iterations?#{params.to_query}",
@@ -9,7 +9,7 @@ module PivotalApiHelper
     
     stories_with_analytics = stories_with_analytics(project_id, backlog_params["number"])
     
-    Backlog.new(backlog_params, project_id, project_name, team, owners(backlog_params["stories"]), stories_with_analytics, update_burndown_enabled)
+    Backlog.new(backlog_params, project_id, project_name, team, owners(backlog_params["stories"]), stories_with_analytics, update_burndown_enabled, ror, appian)
   end
 
   def stories_with_analytics(project_id, iteration_number)

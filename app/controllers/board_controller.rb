@@ -31,10 +31,12 @@ class BoardController < ApplicationController
 
     def set_current
       project_ids = @account.project_ids.split(',')
+      ror = @account.ror
+      appian = @account.appian
       if project_ids && project_ids.count > 0
-        @current = backlog(project_ids.delete_at(0), nil, false)
+        @current = backlog(project_ids.delete_at(0), nil, false, ror, appian)
         project_ids.each do |project_id|
-          @current.merge(backlog(project_id, nil, false))
+          @current.merge(backlog(project_id, nil, false, ror, appian))
         end
       end
     end

@@ -4,20 +4,24 @@ class Backlog
   include ActiveModel::Model
 
   attr_accessor :start, :finish
+
+  attr_accessor :ror, :appian
   
-  attr_accessor :stories, :unstarted_stories, :started_stories, :started_ror_stories, :started_appian_stories, :finished_stories, 
+  attr_accessor :stories, :unstarted_stories, :started_stories, :finished_stories,
                 :delivered_stories, :impeded_stories, :accepted_stories, :accepted_undeployed_stories, :accepted_deployed_stories
 
-  attr_accessor :unstarted_story_points, :started_story_points, :started_ror_story_points, :started_appian_story_points, :finished_story_points,
+  attr_accessor :unstarted_story_points, :started_story_points, :finished_story_points,
                 :delivered_story_points, :impeded_story_points, :accepted_story_points, :accepted_undeployed_story_points, :accepted_deployed_story_points
   
-  def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics, update_burndown_enabled)
+  def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics, update_burndown_enabled, ror, appian)
     @start  = Date.parse(backlog_params["start"]) + 1
     @finish = Date.parse(backlog_params["finish"])
     @project_id = project_id
     @project_name = project_name
     @team   = team
     @owners = owners
+    @ror = ror
+    @appian = appian
     convert_params_to_stories(backlog_params["stories"], stories_with_analytics)
     categorize_stories_by_state
     update_burndown if update_burndown_enabled
@@ -27,8 +31,6 @@ class Backlog
     self.stories                     += backlog.stories
     self.unstarted_stories           += backlog.unstarted_stories
     self.started_stories             += backlog.started_stories
-    self.started_ror_stories         += backlog.started_ror_stories
-    self.started_appian_stories      += backlog.started_appian_stories
     self.finished_stories            += backlog.finished_stories
     self.delivered_stories           += backlog.delivered_stories
     self.impeded_stories             += backlog.impeded_stories
@@ -38,8 +40,6 @@ class Backlog
 
     self.unstarted_story_points            += backlog.unstarted_story_points
     self.started_story_points              += backlog.started_story_points
-    self.started_ror_story_points          += backlog.started_ror_story_points
-    self.started_appian_story_points       += backlog.started_appian_story_points
     self.finished_story_points             += backlog.finished_story_points
     self.delivered_story_points            += backlog.delivered_story_points
     self.impeded_story_points              += backlog.impeded_story_points
@@ -49,8 +49,6 @@ class Backlog
 
     self.unstarted_stories.sort! { |a,b| b.started_time <=> a.started_time }
     self.started_stories.sort! { |a,b| b.started_time <=> a.started_time }
-    self.started_ror_stories.sort! { |a,b| b.started_time <=> a.started_time }
-    self.started_appian_stories.sort! { |a,b| b.started_time <=> a.started_time }
     self.finished_stories.sort! { |a,b| b.started_time <=> a.started_time }
     self.delivered_stories.sort! { |a,b| b.started_time <=> a.started_time }
     self.accepted_stories.sort! { |a,b| b.started_time <=> a.started_time }
@@ -88,8 +86,6 @@ class Backlog
     def categorize_stories_by_state
       @unstarted_stories           ||= []
       @started_stories             ||= []
-      @started_ror_stories         ||= []
-      @started_appian_stories      ||= []
       @finished_stories            ||= []
       @delivered_stories           ||= []
       @impeded_stories             ||= []
@@ -99,8 +95,6 @@ class Backlog
 
       @unstarted_story_points           ||= 0
       @started_story_points             ||= 0
-      @started_ror_story_points         ||= 0
-      @started_appian_story_points      ||= 0
       @finished_story_points            ||= 0
       @delivered_story_points           ||= 0
       @impeded_story_points             ||= 0
@@ -109,46 +103,39 @@ class Backlog
       @accepted_deployed_story_points   ||= 0
       
       @stories.select do |story|
-        if (story.team?(@team) && !story.impeded? && (story.state?("unstarted") ||
-          story.state?("planned") || story.state?("rejected")))
-          @unstarted_stories.push(story)
-          @unstarted_story_points += story.estimate unless story.estimate.nil?
-        elsif (story.team?(@team) && !story.impeded? && story.state?("started"))
-          @started_stories.push(story)
-          @started_story_points += story.estimate unless story.estimate.nil?
-          if story.appian?
-            @started_appian_stories.push(story)
-            @started_appian_story_points += story.estimate unless story.estimate.nil?
-          else
-            @started_ror_stories.push(story)
-            @started_ror_story_points += story.estimate unless story.estimate.nil?
+        if (ror && story.ror?) || (appian && story.appian?)
+          if (story.team?(@team) && !story.impeded? && (story.state?("unstarted") ||
+            story.state?("planned") || story.state?("rejected")))
+            @unstarted_stories.push(story)
+            @unstarted_story_points += story.estimate unless story.estimate.nil?
+          elsif (story.team?(@team) && !story.impeded? && story.state?("started"))
+            @started_stories.push(story)
+            @started_story_points += story.estimate unless story.estimate.nil?
+          elsif (story.team?(@team) && !story.impeded? && story.state?("finished"))
+            @finished_stories.push(story)
+            @finished_story_points += story.estimate unless story.estimate.nil?
+          elsif (story.team?(@team) && !story.impeded? && story.state?("delivered"))
+            @delivered_stories.push(story)
+            @delivered_story_points += story.estimate unless story.estimate.nil?
+          elsif (story.team?(@team) && !story.impeded? && story.state?("accepted"))
+            @accepted_stories.push(story)
+            @accepted_story_points += story.estimate unless story.estimate.nil?
+            if story.deployed?
+              @accepted_deployed_stories.push(story)
+              @accepted_undeployed_story_points += story.estimate unless story.estimate.nil?
+            else
+              @accepted_undeployed_stories.push(story)
+              @accepted_deployed_story_points += story.estimate unless story.estimate.nil?
+            end
+          elsif (story.team?(@team) && story.impeded?)
+            @impeded_stories.push(story)
+            @impeded_story_points += story.estimate unless story.estimate.nil?
           end
-        elsif (story.team?(@team) && !story.impeded? && story.state?("finished"))
-          @finished_stories.push(story)
-          @finished_story_points += story.estimate unless story.estimate.nil?
-        elsif (story.team?(@team) && !story.impeded? && story.state?("delivered"))
-          @delivered_stories.push(story)
-          @delivered_story_points += story.estimate unless story.estimate.nil?
-        elsif (story.team?(@team) && !story.impeded? && story.state?("accepted"))
-          @accepted_stories.push(story)
-          @accepted_story_points += story.estimate unless story.estimate.nil?
-          if story.deployed?
-            @accepted_deployed_stories.push(story)
-            @accepted_undeployed_story_points += story.estimate unless story.estimate.nil?
-          else
-            @accepted_undeployed_stories.push(story)
-            @accepted_deployed_story_points += story.estimate unless story.estimate.nil?
-          end
-        elsif (story.team?(@team) && story.impeded?)
-          @impeded_stories.push(story)
-          @impeded_story_points += story.estimate unless story.estimate.nil?          
         end
       end
 
       @unstarted_stories.sort! { |a,b| b.started_time <=> a.started_time }
       @started_stories.sort! { |a,b| b.started_time <=> a.started_time }
-      @started_ror_stories.sort! { |a,b| b.started_time <=> a.started_time }
-      @started_appian_stories.sort! { |a,b| b.started_time <=> a.started_time }
       @finished_stories.sort! { |a,b| b.started_time <=> a.started_time }
       @delivered_stories.sort! { |a,b| b.started_time <=> a.started_time }
       @accepted_stories.sort! { |a,b| b.started_time <=> a.started_time }

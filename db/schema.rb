@@ -11,16 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170302075251) do
+ActiveRecord::Schema.define(version: 20180110143215) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
     t.string   "path"
     t.string   "project_name"
-    t.integer  "project_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
     t.string   "project_ids"
+    t.boolean  "ror",          default: true
+    t.boolean  "appian",       default: true
   end
 
   create_table "burndowns", force: :cascade do |t|
