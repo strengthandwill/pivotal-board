@@ -103,7 +103,7 @@ class Backlog
       @accepted_deployed_story_points   ||= 0
       
       @stories.select do |story|
-        if (ror && story.ror?) || (appian && story.appian?)
+        # if (ror && story.ror?) || (appian && story.appian?)
           if (story.team?(@team) && !story.impeded? && (story.state?("unstarted") ||
             story.state?("planned") || story.state?("rejected")))
             @unstarted_stories.push(story)
@@ -131,7 +131,7 @@ class Backlog
             @impeded_stories.push(story)
             @impeded_story_points += story.estimate unless story.estimate.nil?
           end
-        end
+        # end
       end
 
       @unstarted_stories.sort! { |a,b| b.started_time <=> a.started_time }
