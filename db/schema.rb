@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180110163246) do
+ActiveRecord::Schema.define(version: 20180515143624) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 20180110163246) do
     t.datetime "updated_at", null: false
     t.integer  "impeded"
     t.integer  "project_id"
+  end
+
+  create_table "merge_requests", force: :cascade do |t|
+    t.string "project_name"
+    t.string "description"
+    t.string "state"
   end
 
   create_table "people", force: :cascade do |t|

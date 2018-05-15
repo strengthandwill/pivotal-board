@@ -15,6 +15,13 @@ Rails.application.routes.draw do
   get '/board/:account_path'         => 'board#index'
   get '/board/stories/:account_path' => 'board#stories'
 
+  # merge requests
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      post 'merge_requests/:account_path' => 'merge_requests#create'
+    end
+  end
+
   # kanban
   # get '/kanban'               => 'kanban#index'
   # get '/kanban/:team'         => 'kanban#index'
