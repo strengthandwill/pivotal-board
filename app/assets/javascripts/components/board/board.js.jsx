@@ -44,6 +44,27 @@ var Board = React.createClass({
   componentWillUnmount: function() {
     clearInterval(this.timer);
   },
+  renderImpededOrMergeRequestsBacklog: function() {
+    if (this.props.account_path=="reach") {
+      return (
+        <Backlog name="Merge Requests"  id="impeded"
+          stories={this.state.backlog.impeded_stories}
+          story_points={this.state.backlog.impeded_story_points}
+          settings={this.props.settings}
+          show_started_time={this.props.show_started_time}
+          owner_image={this.props.owner_image} />
+      )
+    } else {
+      return (
+        <Backlog name="Impeded"  id="impeded"
+          stories={this.state.backlog.impeded_stories}
+          story_points={this.state.backlog.impeded_story_points}
+          settings={this.props.settings}
+          show_started_time={this.props.show_started_time}
+          owner_image={this.props.owner_image} />
+      )
+    }
+  },
   render: function() {
     return (
       <div className="board">
@@ -71,12 +92,7 @@ var Board = React.createClass({
           settings={this.props.settings}
           show_started_time={this.props.show_started_time}
           owner_image={this.props.owner_image} />
-        <Backlog name="Impeded"  id="impeded"
-          stories={this.state.backlog.impeded_stories}
-          story_points={this.state.backlog.impeded_story_points}
-          settings={this.props.settings}
-          show_started_time={this.props.show_started_time}
-          owner_image={this.props.owner_image} />
+        {this.renderImpededOrMergeRequestsBacklog()}
         <Backlog name="Done"  id="accepted"
           stories={this.state.backlog.accepted_stories}
           story_points={this.state.backlog.accepted_story_points}
