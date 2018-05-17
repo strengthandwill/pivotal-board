@@ -45,11 +45,12 @@ var Board = React.createClass({
     clearInterval(this.timer);
   },
   renderImpededOrMergeRequestsBacklog: function() {
-    if (this.props.account_path=="reach") {
+    if (this.props.account_path=="test") {
+      console.log(this.state.backlog.merge_requests);
       return (
         <Backlog name="Merge Requests"  id="impeded"
-          stories={this.state.backlog.impeded_stories}
-          story_points={this.state.backlog.impeded_story_points}
+          stories={this.state.backlog.merge_requests}
+          story_points={this.state.backlog.merge_requests_count}
           settings={this.props.settings}
           show_started_time={this.props.show_started_time}
           owner_image={this.props.owner_image} />

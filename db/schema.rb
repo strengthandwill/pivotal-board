@@ -40,9 +40,12 @@ ActiveRecord::Schema.define(version: 20180515143624) do
   end
 
   create_table "merge_requests", force: :cascade do |t|
-    t.string "project_name"
-    t.string "description"
-    t.string "state"
+    t.string  "project_name"
+    t.string  "title"
+    t.string  "description"
+    t.string  "url"
+    t.integer "started_time"
+    t.string  "state"
   end
 
   create_table "people", force: :cascade do |t|

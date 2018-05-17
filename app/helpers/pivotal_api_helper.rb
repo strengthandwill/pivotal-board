@@ -6,9 +6,9 @@ module PivotalApiHelper
                               {:'X-TrackerToken' => ENV["pivotal_api_token"]}
     backlog_params = JSON.parse(response).first
     stories_with_analytics = []
-    
+
     stories_with_analytics = stories_with_analytics(project_id, backlog_params["number"])
-    
+
     Backlog.new(backlog_params, project_id, project_name, team, owners(backlog_params["stories"]), stories_with_analytics, update_burndown_enabled, ror, appian)
   end
 
