@@ -4,4 +4,4 @@
   <% provide :title, "#{@account.project_name} (#{@account.name})" %>
 <% end %>
 
-<%= react_component 'Board', { team: @team, account_path: @account.path, owner_image: @account.owner_image, backlog: @current, settings: @settings, show_started_time: @show_started_time }, class: "board" %>
+<%= react_component 'Board', { team: @team, account: @account, owner_image: @account.owner_image, backlog: @current, settings: @settings, show_started_time: @show_started_time }, class: "board" %>
