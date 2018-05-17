@@ -9,7 +9,7 @@ var Board = React.createClass({
   },
   loadStoriesFromServer: function() {
     $.ajax({
-      url: "/board/stories/" + this.props.account_path,
+      url: "/board/stories/" + this.props.account.path,
       dataType: "json",
       cache: false,
       success: function(data) {
