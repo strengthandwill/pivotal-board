@@ -61,6 +61,10 @@ class Story
     include_label?("impeded")
   end
 
+  def merge_request?
+    include_label?("merge request") || include_label?("merge-request")|| include_label?("mr")
+  end
+
   def ror?
     include_label?("ror")
   end

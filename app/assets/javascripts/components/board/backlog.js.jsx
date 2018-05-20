@@ -12,10 +12,10 @@ var Backlog = React.createClass({
         <div className="panel-body">
           {this.props.stories != null && this.props.stories.map(function(story, i) {
             return <Story story={story}
-                          settings={settings}
-                          key={i}
-                          show_started_time={show_started_time}
-                          owner_image={owner_image} />;
+              settings={settings}
+              key={i}
+              show_started_time={show_started_time}
+              owner_image={owner_image} />;
           })}
         </div>
       </div>

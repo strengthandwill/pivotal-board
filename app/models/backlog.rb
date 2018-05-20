@@ -9,11 +9,11 @@ class Backlog
   
   attr_accessor :stories, :unstarted_stories, :started_stories, :finished_stories,
                 :delivered_stories, :impeded_stories, :accepted_stories, :accepted_undeployed_stories, :accepted_deployed_stories,
-                :merge_requests
+                :merge_requests, :merge_request_stories
 
   attr_accessor :unstarted_story_points, :started_story_points, :finished_story_points,
                 :delivered_story_points, :impeded_story_points, :accepted_story_points, :accepted_undeployed_story_points, :accepted_deployed_story_points,
-                :merge_requests_count
+                :merge_requests_count, :merge_request_story_points
   
   def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics, update_burndown_enabled, ror, appian)
     @start  = Date.parse(backlog_params["start"]) + 1
@@ -95,6 +95,7 @@ class Backlog
       @accepted_stories            ||= []
       @accepted_undeployed_stories ||= []
       @accepted_deployed_stories   ||= []
+      @merge_request_stories       ||= []
 
       @unstarted_story_points           ||= 0
       @started_story_points             ||= 0
@@ -104,37 +105,46 @@ class Backlog
       @accepted_story_points            ||= 0
       @accepted_undeployed_story_points ||= 0
       @accepted_deployed_story_points   ||= 0
+      @merge_request_story_points       ||= 0
       
       @stories.select do |story|
-        # if (ror && story.ror?) || (appian && story.appian?)
-          if (story.team?(@team) && !story.impeded? && (story.state?("unstarted") ||
-            story.state?("planned") || story.state?("rejected")))
-            @unstarted_stories.push(story)
-            @unstarted_story_points += story.estimate unless story.estimate.nil?
-          elsif (story.team?(@team) && !story.impeded? && story.state?("started"))
-            @started_stories.push(story)
-            @started_story_points += story.estimate unless story.estimate.nil?
-          elsif (story.team?(@team) && !story.impeded? && story.state?("finished"))
-            @finished_stories.push(story)
-            @finished_story_points += story.estimate unless story.estimate.nil?
-          elsif (story.team?(@team) && !story.impeded? && story.state?("delivered"))
-            @delivered_stories.push(story)
-            @delivered_story_points += story.estimate unless story.estimate.nil?
-          elsif (story.team?(@team) && !story.impeded? && story.state?("accepted"))
-            @accepted_stories.push(story)
-            @accepted_story_points += story.estimate unless story.estimate.nil?
-            if story.deployed?
-              @accepted_deployed_stories.push(story)
-              @accepted_undeployed_story_points += story.estimate unless story.estimate.nil?
-            else
-              @accepted_undeployed_stories.push(story)
-              @accepted_deployed_story_points += story.estimate unless story.estimate.nil?
+        if story.team?(@team)
+          if !story.impeded?
+            if story.state?("unstarted") || story.state?("planned") || story.state?("rejected")
+              @unstarted_stories.push(story)
+              @unstarted_story_points += story.estimate unless story.estimate.nil?
+            elsif story.state?("started")
+              if !story.merge_request?
+                @started_stories.push(story)
+                @started_story_points += story.estimate unless story.estimate.nil?
+              else
+                @merge_request_stories.push(story)
+                @merge_request_story_points += story.estimate unless story.estimate.nil?
+              end
+            elsif story.state?("finished")
+              @finished_stories.push(story)
+              @finished_story_points += story.estimate unless story.estimate.nil?
+            elsif story.state?("delivered")
+              @delivered_stories.push(story)
+              @delivered_story_points += story.estimate unless story.estimate.nil?
+            elsif story.state?("accepted")
+              @accepted_stories.push(story)
+              @accepted_story_points += story.estimate unless story.estimate.nil?
+              if story.deployed?
+                @accepted_deployed_stories.push(story)
+                @accepted_undeployed_story_points += story.estimate unless story.estimate.nil?
+              else
+                @accepted_undeployed_stories.push(story)
+                @accepted_deployed_story_points += story.estimate unless story.estimate.nil?
+              end
             end
-          elsif (story.team?(@team) && story.impeded?)
-            @impeded_stories.push(story)
-            @impeded_story_points += story.estimate unless story.estimate.nil?
+          else
+            if story.impeded?
+              @impeded_stories.push(story)
+              @impeded_story_points += story.estimate unless story.estimate.nil?
+            end
           end
-        # end
+        end
       end
 
       @unstarted_stories.sort! { |a,b| b.started_time <=> a.started_time }

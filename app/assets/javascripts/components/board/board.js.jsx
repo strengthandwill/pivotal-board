@@ -33,7 +33,9 @@ var Board = React.createClass({
       impeded_stories: [],
       impeded_story_points: 0,
       accepted_stories: [],
-      accepted_story_points: 0
+      accepted_story_points: 0,
+      merge_request_stories: [],
+      merge_request_story_points: 0,
     }};
   },
   componentDidMount: function() {
@@ -44,17 +46,22 @@ var Board = React.createClass({
   componentWillUnmount: function() {
     clearInterval(this.timer);
   },
-  renderImpededOrMergeRequestsBacklog: function() {
-    if (this.props.account.merge_requests===true) {
+  renderMergeRequestsBacklog: function() {
+    if (this.props.account.merge_requests==true) {
       return (
         <Backlog name="Merge Requests"  id="impeded"
-          stories={this.state.backlog.merge_requests}
-          story_points={this.state.backlog.merge_requests_count}
+          stories={this.state.backlog.merge_request_stories}
+          story_points={this.state.backlog.merge_request_story_points}
           settings={this.props.settings}
           show_started_time={this.props.show_started_time}
           owner_image={this.props.owner_image} />
       )
     } else {
+      return false;
+    }
+  },
+  renderImpededBacklog: function() {
+    if (this.props.account.merge_requests==false) {
       return (
         <Backlog name="Impeded"  id="impeded"
           stories={this.state.backlog.impeded_stories}
@@ -63,6 +70,8 @@ var Board = React.createClass({
           show_started_time={this.props.show_started_time}
           owner_image={this.props.owner_image} />
       )
+    } else {
+      return false;
     }
   },
   render: function() {
@@ -80,6 +89,7 @@ var Board = React.createClass({
           settings={this.props.settings}
           show_started_time={this.props.show_started_time}
           owner_image={this.props.owner_image} />
+        {this.renderMergeRequestsBacklog()}
         <Backlog name="QE Testing" id="finished"
           stories={this.state.backlog.finished_stories}
           story_points={this.state.backlog.finished_story_points}
@@ -92,7 +102,7 @@ var Board = React.createClass({
           settings={this.props.settings}
           show_started_time={this.props.show_started_time}
           owner_image={this.props.owner_image} />
-        {this.renderImpededOrMergeRequestsBacklog()}
+        {this.renderImpededBacklog()}
         <Backlog name="Done"  id="accepted"
           stories={this.state.backlog.accepted_stories}
           story_points={this.state.backlog.accepted_story_points}
