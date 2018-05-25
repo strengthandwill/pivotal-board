@@ -5,7 +5,7 @@ class PairingController < ApplicationController
   end
 
   def members
-    members = ["jia-rong", "chong-yun-long", "wei-jie", "mvrkrishna-verma", "niladri-ghosh",
-              "yew-lee-goh", "dong-yang-zi", "vadivelan-kuppusamy", "singaravadivelan"]
+    members = ['jia-rong', 'chong-yun-long', 'wei-jie', 'mvrkrishna-verma', 'niladri-ghosh',
+               'yew-lee-goh', 'dong-yang-zi', 'vadivelan-kuppusamy', 'singaravadivelan']
   end
 end

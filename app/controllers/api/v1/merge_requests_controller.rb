@@ -1,16 +1,14 @@
 class Api::V1::MergeRequestsController < Api::ApiController
   before_action :set_account
-  
+
   def create
     json = MultiJson.load(request.body.read, symbolize_keys: true)
     id = json[:object_attributes][:id].to_i
     state = json[:object_attributes][:state]
     labels = json[:labels].collect { |label| label[:title] }
-    if state == "opened" && labels.include?("Review Me")
+    if state == 'opened' && labels.include?('Review Me')
       merge_request = MergeRequest.find_by(id: id)
-      if merge_request.nil?
-        merge_request = MergeRequest.new(id: id)
-      end
+      merge_request = MergeRequest.new(id: id) if merge_request.nil?
       merge_request.id = id
       merge_request.project_name = json[:project][:name]
       merge_request.title = json[:object_attributes][:title]
@@ -23,18 +21,15 @@ class Api::V1::MergeRequestsController < Api::ApiController
       merge_request.save
     else
       merge_request = MergeRequest.find_by(id: id)
-      unless merge_request.nil?
-        merge_request.destroy
-      end
+      merge_request.destroy unless merge_request.nil?
     end
     head :no_content
   end
-  
+
   private
-    def set_account
-      @account = Account.find_by(path: params[:account_path])
-      unless @account
-        head :no_content
-      end
-    end
+
+  def set_account
+    @account = Account.find_by(path: params[:account_path])
+    head :no_content unless @account
+  end
 end

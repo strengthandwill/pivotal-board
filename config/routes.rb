@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     get 'people/edit' => 'devise/registrations#edit',   :as => 'edit_person_registration'
     put 'people'      => 'devise/registrations#update', :as => 'person_registration'
   end
-  
+
   # board
   root to: 'board#home'
   get '/board/:account_path'         => 'board#index'
@@ -26,8 +26,7 @@ Rails.application.routes.draw do
   # get '/kanban'               => 'kanban#index'
   # get '/kanban/:team'         => 'kanban#index'
   # get '/kanban/stories/:team' => 'kanban#stories'
-  
-  
+
   # get '/chart/:project_id/:team' => 'chart#index'
   # get '/list/:project_id/:team'  => 'list#index'
   # get '/lite/:team'              => 'board#lite'
