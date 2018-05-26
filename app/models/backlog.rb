@@ -155,6 +155,7 @@ class Backlog
     @accepted_stories.sort! { |a, b| b.started_time <=> a.started_time }
     @accepted_undeployed_stories.sort! { |a, b| b.started_time <=> a.started_time }
     @accepted_deployed_stories.sort! { |a, b| b.started_time <=> a.started_time }
+    @merge_request_stories.sort! { |a, b| b.started_time <=> a.started_time }
   end
 
   def convert_merge_requests_to_stories

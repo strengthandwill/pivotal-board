@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.10'
+gem 'pg', '~> 0.20.0'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'devise'
@@ -18,8 +19,6 @@ gem 'seed_dump'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
-gem 'web-console', group: :development
-
 group :development, :test do
   gem 'byebug'
   gem 'database_cleaner'
@@ -27,11 +26,14 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 3.0'
   gem 'spring'
-  gem 'sqlite3'
+end
+
+group :development do
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
 end
 
 group :production do
-  gem 'pg'
   gem 'puma'
   gem 'rails_12factor'
 end
