@@ -1,7 +1,0 @@
-<% if @team.nil? %>
-  <% provide :title, "Overall Scrum Board" %>
-<% else %>
-  <% provide :title, "#{@team.capitalize} Scrum Board" %>
-<% end %>
-
-<%= react_component 'BoardLite', { team: @team, project_id: @project_id, backlog: @current, settings: @settings }, class: "board" %>

@@ -9,8 +9,6 @@ class BoardController < ApplicationController
     @show_started_time = ENV['show_started_time'] == 'true'
   end
 
-  def lite; end
-
   def stories
     render json: @current
   end

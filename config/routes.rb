@@ -29,5 +29,4 @@ Rails.application.routes.draw do
 
   # get '/chart/:project_id/:team' => 'chart#index'
   # get '/list/:project_id/:team'  => 'list#index'
-  # get '/lite/:team'              => 'board#lite'
 end
