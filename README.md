@@ -1,6 +1,5 @@
 # Pivotal-Board
-
-## Features
+[![Build Status](https://travis-ci.org/strengthandwill/pivotal-board.svg?branch=master)](https://travis-ci.org/strengthandwill/pivotal-board)
 
 Automatically generate the following from your Pivotal Tracker Project:
 * Scrum Sprint Board
