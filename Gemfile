@@ -10,7 +10,7 @@ gem 'jquery-rails'
 gem 'lazy_high_charts'
 gem 'marked-rails'
 gem 'rails_admin'
-gem 'react-rails', '~> 1.0'
+gem 'react-rails', '~> 2.4.3'
 gem 'rest-client'
 gem 'sass-rails', '>= 3.2'
 gem 'sdoc', '~> 0.4.0', group: :doc
