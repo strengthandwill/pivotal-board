@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526152911) do
+ActiveRecord::Schema.define(version: 20180526155923) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,12 +63,8 @@ ActiveRecord::Schema.define(version: 20180526152911) do
     t.string   "bug_color"
     t.string   "retro_color"
     t.integer  "interval"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "sprint_goal_bahamut"
-    t.string   "sprint_goal_omega"
-    t.string   "sprint_goal_challenger"
-    t.string   "sprint_goal_constellation"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
