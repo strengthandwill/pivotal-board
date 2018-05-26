@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.3'
 
 gem 'rails', '~> 4.2.10'
 gem 'pg', '~> 0.20.0'
@@ -25,7 +26,6 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '~> 3.0'
-  gem 'spring'
 end
 
 group :development do
