@@ -1,0 +1,21 @@
+language: ruby
+rvm:
+- 2.2
+env:
+- DB=pgsql
+services:
+- postgresql
+script:
+- RAILS_ENV=test bundle exec rake db:migrate --trace
+- bundle exec rake db:test:prepare
+- bundle exec rake
+before_script:
+- psql -c 'create database pivotal-board_test;' -U postgres
+- cp config/database.yml.travis config/database.yml
+deploy:
+  provider: heroku
+  app: pivotal-board
+  api_key:
+    secure: f95A11n4dNst52atjd9vTBXIwOm7t0Z4Y9uVitUbT190dRft8k/JLy4WO7ynQcOoPeU66pgGbCC2vIM/Ki2T2NbDkvVuiaHSVz4kPfc28IlWta6emRT+mtRN2YPUkEk/t7cla9JUAwHQP5hQbXB6SCrjFD1D4znPlWKA7AR7yoFrGp2QoIPaN4nirbPMXP90McqJE4ukDSOMLkWKRe668DSdcZkwXfc1cDH8orWXBNs3pUVbDipOkfZZUjMT1ylWBRjYqSLlDjGccRIbRzN3AQ/hhhaZe3oXlIYdL2x8E1EOR+TrEcw9k6GhNKN9rgDNxeoWcvjR7PKRoGxn9qGv1cgTefNw4yq15Tw732iXjttCY/Qb0w7dTUQt5munjy5paEAVO2xC4wYo34twh1pSeNdfv7x2BG51VlAhLAIFgOyTVLeAlOr+kD7jpPz1Q6ZyX6ENxe+iIocEiZfecMTJIM8yv1egHJFhkza96uCFjg7+7r3thZ2DCGQmuATDaPWqJQMekR9qREtijf7dsRQGWLVLNyRH5IKT7SORmHCrbCiH16XevZjy6JrPOR2J3NOvO7/t77m97Phgf1YOOWZM+rSjClFkS3QjwUAqeQ69/V0Jy5Q28W5G9m1hGlcehrrZX8eJBymdl4MoE3mrSHQIRGZFI8sLMYrlreXE6mUst/Y=
+  on:
+    branch: master
