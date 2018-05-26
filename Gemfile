@@ -23,7 +23,6 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'factory_girl_rails'
   gem 'faker'
-  gem 'guard-rspec'
   gem 'rspec-rails', '~> 3.0'
   gem 'spring'
   gem 'sqlite3'
