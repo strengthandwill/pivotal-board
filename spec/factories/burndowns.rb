@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :burndown do
     date '2015-07-04'
     unstarted 1

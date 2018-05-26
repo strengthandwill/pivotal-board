@@ -18,15 +18,16 @@ gem 'seed_dump'
 gem 'turbolinks'
 gem 'uglifier', '>= 1.3.0'
 
+gem 'web-console', group: :development
+
 group :development, :test do
   gem 'byebug'
   gem 'database_cleaner'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'faker'
   gem 'rspec-rails', '~> 3.0'
   gem 'spring'
   gem 'sqlite3'
-  gem 'web-console', '~> 2.0'
 end
 
 group :production do

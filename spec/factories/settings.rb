@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :setting do
     unstarted_color 'MyString'
     started_color 'MyString'
