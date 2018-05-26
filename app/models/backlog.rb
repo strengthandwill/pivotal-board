@@ -9,7 +9,7 @@ class Backlog
 
   attr_accessor :stories, :unstarted_stories, :started_stories, :finished_stories,
                 :delivered_stories, :impeded_stories, :accepted_stories, :accepted_undeployed_stories, :accepted_deployed_stories,
-                :merge_requests, :merge_request_stories
+                :merge_request_stories
 
   attr_accessor :unstarted_story_points, :started_story_points, :finished_story_points,
                 :delivered_story_points, :impeded_story_points, :accepted_story_points, :accepted_undeployed_story_points, :accepted_deployed_story_points,
@@ -26,7 +26,6 @@ class Backlog
     @appian = appian
     convert_params_to_stories(backlog_params['stories'], stories_with_analytics)
     categorize_stories_by_state
-    convert_merge_requests_to_stories
     # update_burndown if update_burndown_enabled
   end
 
@@ -156,22 +155,6 @@ class Backlog
     @accepted_undeployed_stories.sort! { |a, b| b.started_time <=> a.started_time }
     @accepted_deployed_stories.sort! { |a, b| b.started_time <=> a.started_time }
     @merge_request_stories.sort! { |a, b| b.started_time <=> a.started_time }
-  end
-
-  def convert_merge_requests_to_stories
-    @merge_requests_count = MergeRequest.count
-    @merge_requests = []
-    MergeRequest.all.each do |merge_request|
-      story = Story.new(
-        project_name: merge_request.project_name,
-        name:         merge_request.title,
-        description:  merge_request.description,
-        url:          merge_request.url,
-        started_time: merge_request.started_time
-      )
-      @merge_requests.push(story)
-    end
-    @merge_requests.sort! { |a, b| b.started_time <=> a.started_time }
   end
 
   def update_burndown
