@@ -192,7 +192,7 @@ GEM
     rb-inotify (0.9.10)
       ffi (>= 0.5.0, < 2)
     rdoc (4.3.0)
-    react-rails (2.4.4)
+    react-rails (1.11.0)
       babel-transpiler (>= 0.7.0)
       connection_pool
       execjs
@@ -292,7 +292,7 @@ DEPENDENCIES
   rails (~> 4.2.10)
   rails_12factor
   rails_admin
-  react-rails (~> 2.4.3)
+  react-rails (~> 1.11.0)
   rest-client
   rspec-rails (~> 3.0)
   sass-rails (>= 3.2)
