@@ -28,5 +28,4 @@ Rails.application.routes.draw do
   # get '/kanban/stories/:team' => 'kanban#stories'
 
   # get '/chart/:project_id/:team' => 'chart#index'
-  # get '/list/:project_id/:team'  => 'list#index'
 end
