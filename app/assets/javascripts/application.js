@@ -18,7 +18,4 @@
 //= require react_ujs
 //= require components
 //= require bootstrap-sprockets
-//= require highcharts/highstock
-//= require highcharts/highcharts                                                           
-//= require highcharts/highcharts-more
 //= require_tree .
