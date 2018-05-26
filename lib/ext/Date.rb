@@ -1,5 +1,5 @@
 class Date
   def weekday?
-    [6, 0].exclude?(self.wday)
+    [6, 0].exclude?(wday)
   end
 end
