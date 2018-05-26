@@ -1,6 +1,0 @@
-<% if @team.nil? %>
-  <% provide :title, "Overall Kanban Board" %>
-<% else %>
-  <% provide :title, "#{@team.capitalize} Kanban Board" %>
-<% end %>
-<%= react_component 'KanbanBoard', { team: @team, backlog: @current, settings: @settings }, class: "board" %>

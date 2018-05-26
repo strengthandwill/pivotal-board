@@ -21,9 +21,4 @@ Rails.application.routes.draw do
       post 'merge_requests/:account_path' => 'merge_requests#create'
     end
   end
-
-  # kanban
-  # get '/kanban'               => 'kanban#index'
-  # get '/kanban/:team'         => 'kanban#index'
-  # get '/kanban/stories/:team' => 'kanban#stories'
 end
