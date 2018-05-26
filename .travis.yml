@@ -10,7 +10,7 @@ script:
 - bundle exec rake db:test:prepare
 - bundle exec rake
 before_script:
-- psql -c 'create database pivotal_board_test;' -U postgres
+- psql -c 'create database pivotal-board_test;' -U postgres
 - cp config/database.yml.travis config/database.yml
 deploy:
   provider: heroku
