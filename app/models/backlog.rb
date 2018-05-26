@@ -15,7 +15,7 @@ class Backlog
                 :delivered_story_points, :impeded_story_points, :accepted_story_points, :accepted_undeployed_story_points, :accepted_deployed_story_points,
                 :merge_requests_count, :merge_request_story_points
 
-  def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics, _update_burndown_enabled, ror, appian)
+  def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics, ror, appian)
     @start  = Date.parse(backlog_params['start']) + 1
     @finish = Date.parse(backlog_params['finish'])
     @project_id = project_id
@@ -26,7 +26,6 @@ class Backlog
     @appian = appian
     convert_params_to_stories(backlog_params['stories'], stories_with_analytics)
     categorize_stories_by_state
-    # update_burndown if update_burndown_enabled
   end
 
   def merge(backlog)
@@ -155,20 +154,5 @@ class Backlog
     @accepted_undeployed_stories.sort! { |a, b| b.started_time <=> a.started_time }
     @accepted_deployed_stories.sort! { |a, b| b.started_time <=> a.started_time }
     @merge_request_stories.sort! { |a, b| b.started_time <=> a.started_time }
-  end
-
-  def update_burndown
-    today = Date.today
-    if today.weekday?
-      burndown = Burndown.find_by(project_id: @project_id, team: @team, date: today)
-      params = {  project_id: @project_id, team: @team, date: today,
-                  unstarted: @unstarted_story_points, started: @started_story_points, finished: @finished_story_points,
-                  delivered: @delivered_story_points, impeded: @impeded_story_points, accepted: @accepted_story_points }
-      if burndown.nil?
-        Burndown.create(params)
-      else
-        burndown.update_attributes(params)
-      end
-    end
   end
 end
