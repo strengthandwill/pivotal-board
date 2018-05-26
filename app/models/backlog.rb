@@ -15,7 +15,7 @@ class Backlog
                 :delivered_story_points, :impeded_story_points, :accepted_story_points, :accepted_undeployed_story_points, :accepted_deployed_story_points,
                 :merge_requests_count, :merge_request_story_points
 
-  def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics, ror, appian)
+  def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics)
     @start  = Date.parse(backlog_params['start']) + 1
     @finish = Date.parse(backlog_params['finish'])
     @project_id = project_id
