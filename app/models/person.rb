@@ -7,6 +7,10 @@ class Person < ActiveRecord::Base
   devise :database_authenticatable, :recoverable,
          :rememberable, :trackable, :validatable
 
+  validates :person_id, presence: true
+  validates :name, presence: true
+  validates :email, presence: true
+
   def set_params(params = {})
     update_attributes(person_id:             params['id'],
                       username:              params['username'],
