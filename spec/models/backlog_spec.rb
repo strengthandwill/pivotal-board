@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'Backlog'
+require_relative '../../app/models/backlog.rb'
 
 RSpec.describe Backlog, type: :model do
   describe 'backlog' do
