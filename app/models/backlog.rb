@@ -64,7 +64,8 @@ class Backlog
     stories_params.each do |story_params|
       story_params['labels'] = labels(story_params['labels'])
       story_with_analytics_params = stories_with_analytics.select { |story| story['story_id'] == story_params['id'] }.first
-      @stories.push(story(story_params.merge!(story_with_analytics_params)))
+      story_params.merge!(story_with_analytics_params) unless story_with_analytics_params.nil?
+      @stories.push(story(story_params))
     end
   end
 
@@ -108,7 +109,7 @@ class Backlog
 
     @stories.select do |story|
       if story.team?(@team)
-        if !story.impeded?
+        if !story.impeded? && !story.perpetual?
           if story.state?('unstarted') || story.state?('planned') || story.state?('rejected')
             @unstarted_stories.push(story)
             @unstarted_story_points += story.estimate unless story.estimate.nil?
