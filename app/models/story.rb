@@ -65,6 +65,10 @@ class Story
     include_label?('merge request') || include_label?('merge-request') || include_label?('mr')
   end
 
+  def perpetual?
+    include_label?('perpetual')
+  end
+
   def ror?
     include_label?('ror')
   end
