@@ -4,7 +4,7 @@ var Board = React.createClass({
     changeBacklogColor($("#started"),    this.props.settings.started_color);
     changeBacklogColor($("#finished"),   this.props.settings.finished_color);
     changeBacklogColor($("#delivered"),  this.props.settings.delivered_color);
-    changeBacklogColor($("#impeded"),    this.props.settings.impeded_color);
+    changeBacklogColor($("#review"),    this.props.settings.review_color);
     changeBacklogColor($("#accepted"),   this.props.settings.accepted_color);
   },
   loadStoriesFromServer: function() {
@@ -30,8 +30,8 @@ var Board = React.createClass({
       finished_story_points: 0,
       delivered_stories: [],
       delivered_story_points: 0,
-      impeded_stories: [],
-      impeded_story_points: 0,
+      review_stories: [],
+      review_story_points: 0,
       accepted_stories: [],
       accepted_story_points: 0,
       merge_request_stories: [],
@@ -49,7 +49,7 @@ var Board = React.createClass({
   renderMergeRequestsBacklog: function() {
     if (this.props.account.merge_requests==true) {
       return (
-        <Backlog name="Merge Requests"  id="impeded"
+        <Backlog name="Merge Requests"  id="review"
           stories={this.state.backlog.merge_request_stories}
           story_points={this.state.backlog.merge_request_story_points}
           settings={this.props.settings}
@@ -63,9 +63,9 @@ var Board = React.createClass({
   renderImpededBacklog: function() {
     if (this.props.account.merge_requests==false) {
       return (
-        <Backlog name="Review"  id="impeded"
-          stories={this.state.backlog.impeded_stories}
-          story_points={this.state.backlog.impeded_story_points}
+        <Backlog name="Review"  id="review"
+          stories={this.state.backlog.review_stories}
+          story_points={this.state.backlog.review_story_points}
           settings={this.props.settings}
           show_started_time={this.props.show_started_time}
           owner_image={this.props.owner_image} />

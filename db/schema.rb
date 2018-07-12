@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180526155923) do
+ActiveRecord::Schema.define(version: 20180712132221) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20180526155923) do
     t.string   "started_color"
     t.string   "finished_color"
     t.string   "delivered_color"
-    t.string   "impeded_color"
+    t.string   "review_color"
     t.string   "accepted_color"
     t.string   "feature_color"
     t.string   "chore_color"

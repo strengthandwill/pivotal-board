@@ -8,11 +8,11 @@ class Backlog
   attr_accessor :ror, :appian
 
   attr_accessor :stories, :unstarted_stories, :started_stories, :finished_stories,
-                :delivered_stories, :impeded_stories, :accepted_stories, :accepted_undeployed_stories, :accepted_deployed_stories,
+                :delivered_stories, :review_stories, :accepted_stories, :accepted_undeployed_stories, :accepted_deployed_stories,
                 :merge_request_stories
 
   attr_accessor :unstarted_story_points, :started_story_points, :finished_story_points,
-                :delivered_story_points, :impeded_story_points, :accepted_story_points, :accepted_undeployed_story_points, :accepted_deployed_story_points,
+                :delivered_story_points, :review_story_points, :accepted_story_points, :accepted_undeployed_story_points, :accepted_deployed_story_points,
                 :merge_requests_count, :merge_request_story_points
 
   def initialize(backlog_params, project_id, project_name, team, owners, stories_with_analytics)
@@ -34,7 +34,7 @@ class Backlog
     self.started_stories             += backlog.started_stories
     self.finished_stories            += backlog.finished_stories
     self.delivered_stories           += backlog.delivered_stories
-    self.impeded_stories             += backlog.impeded_stories
+    self.review_stories             += backlog.review_stories
     self.accepted_stories            += backlog.accepted_stories
     self.accepted_undeployed_stories += backlog.accepted_undeployed_stories
     self.accepted_deployed_stories   += backlog.accepted_deployed_stories
@@ -43,7 +43,7 @@ class Backlog
     self.started_story_points              += backlog.started_story_points
     self.finished_story_points             += backlog.finished_story_points
     self.delivered_story_points            += backlog.delivered_story_points
-    self.impeded_story_points              += backlog.impeded_story_points
+    self.review_story_points              += backlog.review_story_points
     self.accepted_story_points             += backlog.accepted_story_points
     self.accepted_undeployed_story_points  += backlog.accepted_undeployed_story_points
     self.accepted_deployed_story_points    += backlog.accepted_deployed_story_points
@@ -93,7 +93,7 @@ class Backlog
     @started_stories             ||= []
     @finished_stories            ||= []
     @delivered_stories           ||= []
-    @impeded_stories             ||= []
+    @review_stories             ||= []
     @accepted_stories            ||= []
     @accepted_undeployed_stories ||= []
     @accepted_deployed_stories   ||= []
@@ -103,7 +103,7 @@ class Backlog
     @started_story_points             ||= 0
     @finished_story_points            ||= 0
     @delivered_story_points           ||= 0
-    @impeded_story_points             ||= 0
+    @review_story_points             ||= 0
     @accepted_story_points            ||= 0
     @accepted_undeployed_story_points ||= 0
     @accepted_deployed_story_points   ||= 0
@@ -111,7 +111,7 @@ class Backlog
 
     @stories.select do |story|
       if story.team?(@team)
-        if !story.impeded? && !story.perpetual?
+        if !story.review? && !story.perpetual?
           if story.state?('unstarted') || story.state?('planned') || story.state?('rejected')
             @unstarted_stories.push(story)
             @unstarted_story_points += story.estimate unless story.estimate.nil?
@@ -141,9 +141,9 @@ class Backlog
             end
           end
         else
-          if story.impeded?
-            @impeded_stories.push(story)
-            @impeded_story_points += story.estimate unless story.estimate.nil?
+          if story.review?
+            @review_stories.push(story)
+            @review_story_points += story.estimate unless story.estimate.nil?
           end
         end
       end

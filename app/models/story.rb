@@ -58,7 +58,7 @@ class Story
     state?('rejected')
   end
 
-  def impeded?
+  def review?
     include_label?("#{start.strftime('%F')} review")
   end
 
