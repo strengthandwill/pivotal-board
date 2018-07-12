@@ -63,7 +63,7 @@ var Board = React.createClass({
   renderImpededBacklog: function() {
     if (this.props.account.merge_requests==false) {
       return (
-        <Backlog name="Impeded"  id="impeded"
+        <Backlog name="Review"  id="impeded"
           stories={this.state.backlog.impeded_stories}
           story_points={this.state.backlog.impeded_story_points}
           settings={this.props.settings}

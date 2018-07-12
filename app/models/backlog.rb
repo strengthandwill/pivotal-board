@@ -65,6 +65,8 @@ class Backlog
       story_params['labels'] = labels(story_params['labels'])
       story_with_analytics_params = stories_with_analytics.select { |story| story['story_id'] == story_params['id'] }.first
       story_params.merge!(story_with_analytics_params) unless story_with_analytics_params.nil?
+      story_params['start'] = @start
+      story_params['finish'] = @finish
       @stories.push(story(story_params))
     end
   end

@@ -10,7 +10,8 @@ class Story
                  :started_time, :started_count, :started_days,
                  :finished_time, :finished_count,
                  :delivered_time, :delivered_count,
-                 :rejected_time, :rejected_count
+                 :rejected_time, :rejected_count,
+                 :start, :finish
 
   def initialize(options = {})
     super(options)
@@ -58,7 +59,7 @@ class Story
   end
 
   def impeded?
-    include_label?('impeded')
+    include_label?("#{start.strftime('%F')} review")
   end
 
   def merge_request?
