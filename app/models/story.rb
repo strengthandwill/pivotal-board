@@ -59,7 +59,7 @@ class Story
   end
 
   def review?
-    include_label?("#{start.strftime('%F')} review")
+    include_label?("#{(finish+1).strftime('%F')} review")
   end
 
   def merge_request?
